@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agent Tracing - ScholarAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Newsreader:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eff1f3",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000000",
+                        "outline": "#76777d",
+                        "on-secondary-container": "#57657b",
+                        "primary-container": "#131b2e",
+                        "inverse-surface": "#2d3133",
+                        "surface-container": "#eceef0",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#c6c6cd",
+                        "on-surface-variant": "#45464d",
+                        "tertiary": "#000000",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-container": "#7c839b",
+                        "secondary": "#515f74",
+                        "tertiary-fixed": "#cde5ff",
+                        "on-tertiary-fixed": "#001d32",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#565e74",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-tertiary-fixed-variant": "#004b74",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#d5e3fd",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-container": "#3d89c3",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "tertiary-container": "#001d32",
+                        "surface": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d5e3fd",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-primary": "#bec6e0",
+                        "tertiary-fixed-dim": "#94ccff",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed-variant": "#3a485c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "gutter": "32px",
+                        "reading-well": "720px",
+                        "margin-edge": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-standard": ["Newsreader"],
+                        "headline-md": ["Inter"],
+                        "body-reading": ["Newsreader"],
+                        "label-ui": ["Inter"],
+                        "citation-note": ["Inter"],
+                        "display-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-standard": ["17px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-reading": ["20px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-ui": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "citation-note": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "display-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 border-r fixed left-0 top-0 border-slate-200 bg-slate-50 flex flex-col p-6 gap-8 z-40">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="text-lg font-black uppercase tracking-widest text-slate-900 font-headline-md text-headline-md">ScholarAI</span>
+</div>
+<p class="font-label-ui text-label-ui text-on-surface-variant">Deep Research Mode</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded font-label-ui text-label-ui hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+            New Inquiry
+        </button>
+<div class="flex-1 flex flex-col gap-1 overflow-y-auto">
+<a class="flex items-center gap-3 p-2 text-slate-500 hover:bg-slate-100 rounded-sm font-label-ui text-label-ui hover:text-slate-900 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 p-2 bg-white text-slate-900 font-semibold border border-slate-200 rounded-sm font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+                Agent Tracing
+            </a>
+<a class="flex items-center gap-3 p-2 text-slate-500 hover:bg-slate-100 rounded-sm font-label-ui text-label-ui hover:text-slate-900 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+                Research Reports
+            </a>
+<a class="flex items-center gap-3 p-2 text-slate-500 hover:bg-slate-100 rounded-sm font-label-ui text-label-ui hover:text-slate-900 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_stories</span>
+                Library
+            </a>
+</div>
+<div class="flex flex-col gap-1 border-t border-slate-200 pt-4">
+<a class="flex items-center gap-3 p-2 text-slate-500 hover:bg-slate-100 rounded-sm font-label-ui text-label-ui hover:text-slate-900 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 p-2 text-slate-500 hover:bg-slate-100 rounded-sm font-label-ui text-label-ui hover:text-slate-900 transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+                Documentation
+            </a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="ml-64 flex-1 flex h-screen overflow-hidden">
+<!-- Left Panel: Agent Plan -->
+<section class="w-80 border-r border-outline-variant bg-surface-container-lowest flex flex-col z-10 shadow-[1px_0_24px_rgba(0,0,0,0.02)]">
+<div class="p-6 border-b border-outline-variant">
+<h2 class="font-label-ui text-label-ui uppercase tracking-wider text-on-surface-variant mb-1">Active Inquiry</h2>
+<h1 class="font-headline-md text-[18px] text-primary leading-snug">Impact of CRISPR-Cas9 on off-target mutations in somatic cells</h1>
+</div>
+<div class="flex-1 overflow-y-auto p-6">
+<h3 class="font-label-ui text-label-ui uppercase tracking-wider text-on-surface-variant mb-4">Agent Execution Plan</h3>
+<div class="relative pl-4 border-l border-outline-variant space-y-6">
+<!-- Step 1: Completed -->
+<div class="relative">
+<div class="absolute -left-[21px] top-0.5 bg-surface-container-lowest text-primary">
+<span class="material-symbols-outlined text-[16px] bg-secondary-fixed rounded-full p-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="pl-2">
+<p class="font-label-ui text-label-ui text-primary line-through opacity-70">Define core search parameters &amp; key terminology</p>
+<p class="font-citation-note text-citation-note text-on-surface-variant mt-1">Completed in 1.2s</p>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="relative">
+<div class="absolute -left-[21px] top-0.5 bg-surface-container-lowest text-primary">
+<span class="material-symbols-outlined text-[16px] bg-secondary-fixed rounded-full p-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="pl-2">
+<p class="font-label-ui text-label-ui text-primary line-through opacity-70">Retrieve primary literature from PubMed &amp; BioRxiv</p>
+<p class="font-citation-note text-citation-note text-on-surface-variant mt-1">Found 142 relevant papers</p>
+</div>
+</div>
+<!-- Step 3: Active -->
+<div class="relative">
+<div class="absolute -left-[21px] top-0.5 bg-surface-container-lowest text-primary">
+<span class="material-symbols-outlined text-[16px] text-primary animate-pulse">search</span>
+</div>
+<div class="pl-2 bg-surface-bright border border-outline-variant rounded p-3 -mt-2">
+<p class="font-label-ui text-label-ui text-primary font-semibold">Analyze methodologies for off-target detection</p>
+<div class="mt-2 space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">hourglass_top</span>
+<span class="font-citation-note text-citation-note text-on-surface-variant">Evaluating GUIDE-seq efficacy</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">hourglass_top</span>
+<span class="font-citation-note text-citation-note text-on-surface-variant">Comparing with CIRCLE-seq data</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative opacity-50">
+<div class="absolute -left-[21px] top-0.5 bg-surface-container-lowest text-outline">
+<span class="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
+</div>
+<div class="pl-2">
+<p class="font-label-ui text-label-ui text-on-surface">Synthesize findings on mutation rates</p>
+<p class="font-citation-note text-citation-note text-outline mt-1">Pending sub-tasks</p>
+</div>
+</div>
+<!-- Step 5: Pending -->
+<div class="relative opacity-50">
+<div class="absolute -left-[21px] top-0.5 bg-surface-container-lowest text-outline">
+<span class="material-symbols-outlined text-[16px]">radio_button_unchecked</span>
+</div>
+<div class="pl-2">
+<p class="font-label-ui text-label-ui text-on-surface">Draft comprehensive analysis report</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Center Panel: Process Feed -->
+<section class="flex-1 flex flex-col bg-surface-bright min-w-0">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-3">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-20"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+<h2 class="font-label-ui text-label-ui uppercase tracking-wider text-primary">Live Process Feed</h2>
+</div>
+<div class="flex gap-2">
+<button class="font-citation-note text-citation-note px-3 py-1 border border-outline-variant rounded hover:bg-surface-container transition-colors">Pause</button>
+<button class="font-citation-note text-citation-note px-3 py-1 border border-outline-variant rounded hover:bg-surface-container transition-colors">Export Logs</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-4 font-body-standard text-body-standard">
+<!-- Log Entry -->
+<div class="flex gap-4 group">
+<div class="font-citation-note text-citation-note text-on-surface-variant w-16 pt-1 shrink-0">10:42:01</div>
+<div class="flex-1 border-l-2 border-transparent group-hover:border-outline-variant pl-4 transition-colors">
+<p class="text-on-surface">Initiated parallel analysis of 5 key papers regarding GUIDE-seq methodologies.</p>
+<div class="mt-2 flex gap-2">
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-1 rounded font-citation-note text-citation-note border border-outline-variant">
+<span class="material-symbols-outlined text-[12px]">article</span> Tsai et al., 2015
+                            </span>
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-1 rounded font-citation-note text-citation-note border border-outline-variant">
+<span class="material-symbols-outlined text-[12px]">article</span> Kim et al., 2019
+                            </span>
+</div>
+</div>
+</div>
+<!-- Log Entry -->
+<div class="flex gap-4 group">
+<div class="font-citation-note text-citation-note text-on-surface-variant w-16 pt-1 shrink-0">10:42:15</div>
+<div class="flex-1 border-l-2 border-transparent group-hover:border-outline-variant pl-4 transition-colors">
+<p class="text-on-surface"><span class="font-semibold text-primary">Insight extracted:</span> Tsai et al. report that GUIDE-seq can identify off-target cleavage sites with frequencies as low as 0.1%.</p>
+</div>
+</div>
+<!-- Log Entry -->
+<div class="flex gap-4 group">
+<div class="font-citation-note text-citation-note text-on-surface-variant w-16 pt-1 shrink-0">10:42:18</div>
+<div class="flex-1 border-l-2 border-transparent group-hover:border-outline-variant pl-4 transition-colors">
+<p class="text-on-surface flex items-center gap-2 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+                            Cross-validating claims against recent structural biology reviews...
+                        </p>
+</div>
+</div>
+</div>
+<!-- Context Input -->
+<div class="p-6 border-t border-outline-variant bg-surface-container-lowest">
+<label class="block font-label-ui text-label-ui text-on-surface-variant mb-2" for="agent-steer">Steer Agent Focus (Optional)</label>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline hover:border-primary focus:border-primary focus:outline-none py-2 font-body-standard text-body-standard transition-colors" id="agent-steer" placeholder="e.g., 'Focus specifically on in vivo applications'" type="text"/>
+<button class="absolute right-0 top-2 text-primary hover:text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Panel: Draft Preview -->
+<section class="w-[480px] border-l border-outline-variant bg-surface-container-lowest flex flex-col z-10">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-label-ui text-label-ui uppercase tracking-wider text-on-surface-variant">Live Draft Preview</h2>
+<button class="text-primary hover:text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">open_in_new</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-8 font-body-reading text-body-reading leading-relaxed">
+<h1 class="font-headline-md text-headline-md mb-6">CRISPR-Cas9 Off-Target Mutations: Methodological Evolution</h1>
+<p class="mb-4">The precision of CRISPR-Cas9 nucleases is dictated by the guide RNA (gRNA), yet off-target cleavage remains a significant barrier to clinical translation. Early predictive models relied heavily on in silico prediction, which often failed to capture cell-type-specific chromatin dynamics.</p>
+<div class="my-6 p-4 border border-outline-variant bg-surface-bright relative group">
+<div class="absolute -left-[1px] top-0 bottom-0 w-1 bg-secondary-fixed"></div>
+<p class="font-body-standard text-body-standard italic text-on-surface-variant">Agent is actively composing this section based on comparative analysis of detection methods...</p>
+<div class="mt-2 h-2 w-1/3 bg-surface-container-highest rounded animate-pulse"></div>
+<div class="mt-2 h-2 w-1/2 bg-surface-container-highest rounded animate-pulse"></div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

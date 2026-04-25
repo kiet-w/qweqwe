@@ -1,0 +1,812 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ScholarAI - Research Library</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:wght@400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#e6e8ea",
+              "on-primary-container": "#7c839b",
+              "on-error-container": "#93000a",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#0d1c2f",
+              primary: "#000000",
+              "on-surface": "#191c1e",
+              "surface-dim": "#d8dadc",
+              "primary-container": "#131b2e",
+              "inverse-on-surface": "#eff1f3",
+              "on-tertiary-container": "#3d89c3",
+              "on-surface-variant": "#45464d",
+              "surface-tint": "#565e74",
+              "primary-fixed": "#dae2fd",
+              "inverse-surface": "#2d3133",
+              tertiary: "#000000",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#94ccff",
+              "surface-container": "#eceef0",
+              error: "#ba1a1a",
+              background: "#f7f9fb",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#001d32",
+              "tertiary-fixed": "#cde5ff",
+              "surface-container-low": "#f2f4f6",
+              "outline-variant": "#c6c6cd",
+              "surface-variant": "#e0e3e5",
+              "secondary-fixed": "#d5e3fd",
+              "on-tertiary-fixed": "#001d32",
+              "on-secondary-fixed-variant": "#3a485c",
+              outline: "#76777d",
+              "surface-bright": "#f7f9fb",
+              "primary-fixed-dim": "#bec6e0",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-fixed-dim": "#b9c7e0",
+              "on-primary-fixed-variant": "#3f465c",
+              "on-primary-fixed": "#131b2e",
+              "error-container": "#ffdad6",
+              surface: "#f7f9fb",
+              "surface-container-lowest": "#ffffff",
+              secondary: "#515f74",
+              "on-tertiary-fixed-variant": "#004b74",
+              "on-background": "#191c1e",
+              "inverse-primary": "#bec6e0",
+              "secondary-container": "#d5e3fd",
+              "on-secondary-container": "#57657b",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              gutter: "32px",
+              base: "8px",
+              "section-gap": "80px",
+              "reading-well": "720px",
+              "margin-edge": "48px",
+            },
+            fontFamily: {
+              "body-reading": ["Newsreader"],
+              "label-ui": ["Inter"],
+              "headline-md": ["Inter"],
+              "headline-lg": ["Inter"],
+              "body-standard": ["Newsreader"],
+              "display-xl": ["Inter"],
+              "citation-note": ["Inter"],
+            },
+            fontSize: {
+              "body-reading": [
+                "20px",
+                { lineHeight: "1.6", fontWeight: "400" },
+              ],
+              "label-ui": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-standard": [
+                "17px",
+                { lineHeight: "1.5", fontWeight: "400" },
+              ],
+              "display-xl": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "citation-note": [
+                "12px",
+                { lineHeight: "1.4", fontWeight: "400" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-standard antialiased flex"
+  >
+    <!-- SideNavBar -->
+    <nav
+      class="bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-slate-50 font-sans text-xs uppercase tracking-widest font-semibold h-screen w-64 border-r border-r border-slate-200 dark:border-slate-800 flat no shadows fixed left-0 top-0 flex flex-col h-full py-8 px-4 z-40 hidden md:flex"
+    >
+      <div class="mb-gutter px-4 flex items-center space-x-3">
+        <div
+          class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary"
+        >
+          <span class="material-symbols-outlined text-sm" data-icon="school"
+            >school</span
+          >
+        </div>
+        <div>
+          <h1
+            class="text-xl font-black text-slate-900 dark:text-slate-50 tracking-tight lowercase"
+          >
+            ScholarAI
+          </h1>
+          <p
+            class="text-[10px] text-slate-500 font-medium normal-case tracking-normal"
+          >
+            Academic Workspace
+          </p>
+        </div>
+      </div>
+      <button
+        class="mb-8 mx-2 bg-primary text-on-primary py-3 px-4 rounded-DEFAULT font-label-ui flex items-center justify-center space-x-2 hover:bg-slate-800 transition-colors"
+      >
+        <span class="material-symbols-outlined text-sm" data-icon="add"
+          >add</span
+        >
+        <span>New Research Project</span>
+      </button>
+      <div class="flex-1 overflow-y-auto">
+        <ul class="space-y-1">
+          <li>
+            <a
+              class="flex items-center space-x-3 px-4 py-3 rounded-DEFAULT text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 ease-in-out transform hover:translate-x-1 group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                data-icon="dashboard"
+                >dashboard</span
+              >
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center space-x-3 px-4 py-3 rounded-DEFAULT text-slate-900 dark:text-white border-l-2 border-slate-900 dark:border-slate-100 bg-white dark:bg-slate-800 ml-[-1px] transition-all duration-200 ease-in-out transform hover:translate-x-1 group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                data-icon="menu_book"
+                data-weight="fill"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >menu_book</span
+              >
+              <span>Research Library</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center space-x-3 px-4 py-3 rounded-DEFAULT text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 ease-in-out transform hover:translate-x-1 group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                data-icon="analytics"
+                >analytics</span
+              >
+              <span>Saved Reports</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center space-x-3 px-4 py-3 rounded-DEFAULT text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 ease-in-out transform hover:translate-x-1 group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                data-icon="folder_special"
+                >folder_special</span
+              >
+              <span>Collections</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center space-x-3 px-4 py-3 rounded-DEFAULT text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 ease-in-out transform hover:translate-x-1 group"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                data-icon="format_quote"
+                >format_quote</span
+              >
+              <span>Citations</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-auto pt-4 border-t border-slate-200 dark:border-slate-800">
+        <ul class="space-y-1">
+          <li>
+            <a
+              class="flex items-center space-x-3 px-4 py-3 rounded-DEFAULT text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 ease-in-out transform hover:translate-x-1"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                data-icon="help_outline"
+                >help_outline</span
+              >
+              <span>Help Center</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center space-x-3 px-4 py-3 rounded-DEFAULT text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 ease-in-out transform hover:translate-x-1"
+              href="#"
+            >
+              <span
+                class="material-symbols-outlined text-lg"
+                data-icon="settings"
+                >settings</span
+              >
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Main Content Area -->
+    <main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+      <!-- TopAppBar -->
+      <header
+        class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans text-sm tracking-tight docked full-width top-0 border-b border-b border-slate-200 dark:border-slate-800 flat no shadows flex justify-between items-center h-16 px-8 w-full sticky top-0 z-50"
+      >
+        <div class="flex items-center w-1/3">
+          <!-- Search bar on left -->
+          <div class="relative w-full max-w-md hidden md:block">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-sm"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full bg-slate-50 border-none rounded-DEFAULT pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary focus:bg-white transition-all outline-none font-label-ui text-slate-900 placeholder-slate-400"
+              placeholder="Search library, reports, citations..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center space-x-4 ml-auto">
+          <button
+            class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-150 rounded-full cursor-pointer active:opacity-70 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+          </button>
+          <button
+            class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-150 rounded-full cursor-pointer active:opacity-70 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined" data-icon="history"
+              >history</span
+            >
+          </button>
+          <button
+            class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-150 rounded-full cursor-pointer active:opacity-70 flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined" data-icon="account_circle"
+              >account_circle</span
+            >
+          </button>
+        </div>
+      </header>
+      <!-- Page Canvas -->
+      <div class="p-8 lg:p-margin-edge flex-1">
+        <!-- Page Header & Library Search -->
+        <div
+          class="max-w-[1200px] mx-auto mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div>
+            <h2
+              class="font-headline-lg text-headline-lg text-on-background mb-2"
+            >
+              Research Library
+            </h2>
+            <p
+              class="font-body-standard text-body-standard text-on-surface-variant max-w-2xl"
+            >
+              Access your saved reports, curated collections, and active reading
+              list.
+            </p>
+          </div>
+          <div class="flex items-center space-x-3 w-full md:w-auto">
+            <div class="relative flex-1 md:w-64">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-outline text-sm"
+                data-icon="filter_list"
+                >filter_list</span
+              >
+              <select
+                class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT pl-10 pr-8 py-2 text-sm focus:border-primary focus:ring-0 outline-none font-label-ui text-on-surface appearance-none cursor-pointer"
+              >
+                <option>All Types</option>
+                <option>Reports</option>
+                <option>Papers</option>
+                <option>Collections</option>
+              </select>
+              <span
+                class="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-outline text-sm pointer-events-none"
+                data-icon="expand_more"
+                >expand_more</span
+              >
+            </div>
+            <button
+              class="bg-primary text-on-primary px-4 py-2 rounded-DEFAULT font-label-ui flex items-center space-x-2 hover:bg-surface-tint hover:text-white transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-sm"
+                data-icon="create_new_folder"
+                >create_new_folder</span
+              >
+              <span>New Collection</span>
+            </button>
+          </div>
+        </div>
+        <!-- Bento Grid Layout for Sections -->
+        <div
+          class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8"
+        >
+          <!-- Left Column (Wider): Saved Reports -->
+          <div class="lg:col-span-2 space-y-6">
+            <div
+              class="flex items-center justify-between border-b border-surface-variant pb-3"
+            >
+              <h3
+                class="font-headline-md text-headline-md text-on-surface flex items-center space-x-2"
+              >
+                <span class="material-symbols-outlined" data-icon="analytics"
+                  >analytics</span
+                >
+                <span>Recent Reports</span>
+              </h3>
+              <a
+                class="font-label-ui text-label-ui text-secondary hover:text-primary transition-colors"
+                href="#"
+                >View All</a
+              >
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Report Card 1 -->
+              <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col group hover:border-outline transition-colors relative"
+              >
+                <div class="flex justify-between items-start mb-3">
+                  <span
+                    class="bg-surface-container text-on-surface-variant font-label-ui text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm flex items-center space-x-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[12px] text-primary"
+                      data-icon="check_circle"
+                      data-weight="fill"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >check_circle</span
+                    >
+                    <span>Complete</span>
+                  </span>
+                  <button
+                    class="text-outline hover:text-primary transition-colors"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="more_horiz"
+                      >more_horiz</span
+                    >
+                  </button>
+                </div>
+                <h4
+                  class="font-label-ui text-lg font-semibold text-on-surface mb-2 line-clamp-2 leading-tight"
+                >
+                  Emergent Behaviors in Large Language Models
+                </h4>
+                <p
+                  class="font-body-standard text-sm text-on-surface-variant line-clamp-3 mb-4 flex-1"
+                >
+                  A comprehensive analysis of zero-shot capabilities appearing
+                  in models exceeding 100B parameters, focusing on reasoning
+                  tasks and ethical implications.
+                </p>
+                <div
+                  class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant border-opacity-50"
+                >
+                  <span
+                    class="font-citation-note text-citation-note text-outline"
+                    >Oct 12, 2023</span
+                  >
+                  <div
+                    class="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="p-1 text-secondary hover:text-primary bg-surface-container-low hover:bg-surface-container rounded-sm"
+                      title="Share"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[16px]"
+                        data-icon="share"
+                        >share</span
+                      >
+                    </button>
+                    <button
+                      class="p-1 text-secondary hover:text-primary bg-surface-container-low hover:bg-surface-container rounded-sm"
+                      title="Export"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[16px]"
+                        data-icon="download"
+                        >download</span
+                      >
+                    </button>
+                    <button
+                      class="px-2 py-1 bg-surface-container-high text-on-surface hover:bg-primary hover:text-on-primary font-label-ui text-[11px] rounded-sm transition-colors flex items-center space-x-1"
+                    >
+                      <span>View</span>
+                      <span
+                        class="material-symbols-outlined text-[12px]"
+                        data-icon="arrow_forward"
+                        >arrow_forward</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Report Card 2 -->
+              <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col group hover:border-outline transition-colors relative"
+              >
+                <div class="flex justify-between items-start mb-3">
+                  <span
+                    class="bg-surface-container text-on-surface-variant font-label-ui text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm flex items-center space-x-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[12px] text-primary"
+                      data-icon="check_circle"
+                      data-weight="fill"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >check_circle</span
+                    >
+                    <span>Complete</span>
+                  </span>
+                  <button
+                    class="text-outline hover:text-primary transition-colors"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="more_horiz"
+                      >more_horiz</span
+                    >
+                  </button>
+                </div>
+                <h4
+                  class="font-label-ui text-lg font-semibold text-on-surface mb-2 line-clamp-2 leading-tight"
+                >
+                  Graphene Synthesis Alternatives 2023
+                </h4>
+                <p
+                  class="font-body-standard text-sm text-on-surface-variant line-clamp-3 mb-4 flex-1"
+                >
+                  Review of scalable chemical vapor deposition methods and
+                  cost-analysis of precursors for industrial-scale
+                  manufacturing.
+                </p>
+                <div
+                  class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant border-opacity-50"
+                >
+                  <span
+                    class="font-citation-note text-citation-note text-outline"
+                    >Sep 28, 2023</span
+                  >
+                  <div
+                    class="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="p-1 text-secondary hover:text-primary bg-surface-container-low hover:bg-surface-container rounded-sm"
+                      title="Share"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[16px]"
+                        data-icon="share"
+                        >share</span
+                      >
+                    </button>
+                    <button
+                      class="p-1 text-secondary hover:text-primary bg-surface-container-low hover:bg-surface-container rounded-sm"
+                      title="Export"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[16px]"
+                        data-icon="download"
+                        >download</span
+                      >
+                    </button>
+                    <button
+                      class="px-2 py-1 bg-surface-container-high text-on-surface hover:bg-primary hover:text-on-primary font-label-ui text-[11px] rounded-sm transition-colors flex items-center space-x-1"
+                    >
+                      <span>View</span>
+                      <span
+                        class="material-symbols-outlined text-[12px]"
+                        data-icon="arrow_forward"
+                        >arrow_forward</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Report Card 3 -->
+              <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col group hover:border-outline transition-colors relative"
+              >
+                <div class="flex justify-between items-start mb-3">
+                  <span
+                    class="bg-surface-container text-on-surface-variant font-label-ui text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm flex items-center space-x-1"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[12px] text-outline"
+                      data-icon="pending"
+                      >pending</span
+                    >
+                    <span>Draft</span>
+                  </span>
+                  <button
+                    class="text-outline hover:text-primary transition-colors"
+                  >
+                    <span
+                      class="material-symbols-outlined text-sm"
+                      data-icon="more_horiz"
+                      >more_horiz</span
+                    >
+                  </button>
+                </div>
+                <h4
+                  class="font-label-ui text-lg font-semibold text-on-surface mb-2 line-clamp-2 leading-tight"
+                >
+                  Macroeconomic Impacts of AGI Transition
+                </h4>
+                <p
+                  class="font-body-standard text-sm text-on-surface-variant line-clamp-3 mb-4 flex-1"
+                >
+                  Preliminary synthesis of labor market displacement models and
+                  proposed universal basic income frameworks across OECD
+                  nations.
+                </p>
+                <div
+                  class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant border-opacity-50"
+                >
+                  <span
+                    class="font-citation-note text-citation-note text-outline"
+                    >Last edited 2d ago</span
+                  >
+                  <div
+                    class="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="px-2 py-1 bg-surface-container-high text-on-surface hover:bg-primary hover:text-on-primary font-label-ui text-[11px] rounded-sm transition-colors flex items-center space-x-1"
+                    >
+                      <span>Continue</span>
+                      <span
+                        class="material-symbols-outlined text-[12px]"
+                        data-icon="edit"
+                        >edit</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column (Narrower): Collections & Reading List -->
+          <div class="space-y-8">
+            <!-- Collections -->
+            <div>
+              <div
+                class="flex items-center justify-between border-b border-surface-variant pb-3 mb-4"
+              >
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface flex items-center space-x-2"
+                >
+                  <span
+                    class="material-symbols-outlined"
+                    data-icon="folder_special"
+                    >folder_special</span
+                  >
+                  <span>Collections</span>
+                </h3>
+              </div>
+              <ul class="space-y-2">
+                <li class="group">
+                  <a
+                    class="flex items-center justify-between p-3 rounded-DEFAULT hover:bg-surface-container transition-colors border border-transparent hover:border-outline-variant"
+                    href="#"
+                  >
+                    <div class="flex items-center space-x-3">
+                      <div
+                        class="text-secondary group-hover:text-primary transition-colors"
+                      >
+                        <span
+                          class="material-symbols-outlined"
+                          data-icon="folder"
+                          data-weight="fill"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >folder</span
+                        >
+                      </div>
+                      <div>
+                        <p class="font-label-ui text-label-ui text-on-surface">
+                          GenAI Research
+                        </p>
+                        <p
+                          class="font-citation-note text-citation-note text-on-surface-variant"
+                        >
+                          14 items
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity"
+                      data-icon="chevron_right"
+                      >chevron_right</span
+                    >
+                  </a>
+                </li>
+                <li class="group">
+                  <a
+                    class="flex items-center justify-between p-3 rounded-DEFAULT hover:bg-surface-container transition-colors border border-transparent hover:border-outline-variant"
+                    href="#"
+                  >
+                    <div class="flex items-center space-x-3">
+                      <div
+                        class="text-secondary group-hover:text-primary transition-colors"
+                      >
+                        <span
+                          class="material-symbols-outlined"
+                          data-icon="folder"
+                          data-weight="fill"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >folder</span
+                        >
+                      </div>
+                      <div>
+                        <p class="font-label-ui text-label-ui text-on-surface">
+                          Materials Science
+                        </p>
+                        <p
+                          class="font-citation-note text-citation-note text-on-surface-variant"
+                        >
+                          8 items
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity"
+                      data-icon="chevron_right"
+                      >chevron_right</span
+                    >
+                  </a>
+                </li>
+                <li class="group">
+                  <a
+                    class="flex items-center justify-between p-3 rounded-DEFAULT hover:bg-surface-container transition-colors border border-transparent hover:border-outline-variant"
+                    href="#"
+                  >
+                    <div class="flex items-center space-x-3">
+                      <div
+                        class="text-secondary group-hover:text-primary transition-colors"
+                      >
+                        <span
+                          class="material-symbols-outlined"
+                          data-icon="folder"
+                          data-weight="fill"
+                          style="font-variation-settings: &quot;FILL&quot; 1"
+                          >folder</span
+                        >
+                      </div>
+                      <div>
+                        <p class="font-label-ui text-label-ui text-on-surface">
+                          Economics 2024
+                        </p>
+                        <p
+                          class="font-citation-note text-citation-note text-on-surface-variant"
+                        >
+                          22 items
+                        </p>
+                      </div>
+                    </div>
+                    <span
+                      class="material-symbols-outlined text-outline opacity-0 group-hover:opacity-100 transition-opacity"
+                      data-icon="chevron_right"
+                      >chevron_right</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- Reading List (Mini Table style) -->
+            <div>
+              <div
+                class="flex items-center justify-between border-b border-surface-variant pb-3 mb-4"
+              >
+                <h3
+                  class="font-headline-md text-headline-md text-on-surface flex items-center space-x-2"
+                >
+                  <span class="material-symbols-outlined" data-icon="bookmark"
+                    >bookmark</span
+                  >
+                  <span>Reading List</span>
+                </h3>
+              </div>
+              <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden"
+              >
+                <div
+                  class="p-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer group"
+                >
+                  <p
+                    class="font-label-ui text-sm font-semibold text-on-surface mb-1 group-hover:text-primary"
+                  >
+                    Attention Is All You Need
+                  </p>
+                  <p
+                    class="font-citation-note text-citation-note text-on-surface-variant truncate"
+                  >
+                    Vaswani et al. (2017) • NIPS
+                  </p>
+                </div>
+                <div
+                  class="p-4 border-b border-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer group"
+                >
+                  <p
+                    class="font-label-ui text-sm font-semibold text-on-surface mb-1 group-hover:text-primary"
+                  >
+                    Sparks of Artificial General Intelligence
+                  </p>
+                  <p
+                    class="font-citation-note text-citation-note text-on-surface-variant truncate"
+                  >
+                    Bubeck et al. (2023) • arXiv
+                  </p>
+                </div>
+                <div
+                  class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer group flex justify-center text-secondary hover:text-primary"
+                >
+                  <span
+                    class="font-label-ui text-xs uppercase tracking-widest font-semibold py-1"
+                    >View All Papers</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

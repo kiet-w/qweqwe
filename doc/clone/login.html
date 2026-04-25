@@ -1,0 +1,737 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ScholarAI | Autonomous Research for Complex Inquiry</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#f7f9fb",
+              "surface-container-high": "#e6e8ea",
+              "surface-bright": "#f7f9fb",
+              primary: "#000000",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-container": "#57657b",
+              "on-primary-fixed-variant": "#3f465c",
+              outline: "#76777d",
+              "surface-dim": "#d8dadc",
+              "inverse-surface": "#2d3133",
+              "on-surface-variant": "#45464d",
+              "on-secondary-fixed": "#0d1c2f",
+              tertiary: "#000000",
+              "surface-container": "#eceef0",
+              "primary-container": "#131b2e",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#dae2fd",
+              "on-tertiary-fixed-variant": "#004b74",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-fixed-dim": "#b9c7e0",
+              "on-primary-container": "#7c839b",
+              "on-surface": "#191c1e",
+              "secondary-container": "#d5e3fd",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#001d32",
+              "tertiary-fixed-dim": "#94ccff",
+              "secondary-fixed": "#d5e3fd",
+              "inverse-on-surface": "#eff1f3",
+              "outline-variant": "#c6c6cd",
+              "on-secondary-fixed-variant": "#3a485c",
+              "surface-variant": "#e0e3e5",
+              error: "#ba1a1a",
+              "tertiary-fixed": "#cde5ff",
+              "on-error": "#ffffff",
+              background: "#f7f9fb",
+              "tertiary-container": "#001d32",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#bec6e0",
+              "on-tertiary-container": "#3d89c3",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#f2f4f6",
+              secondary: "#515f74",
+              "surface-tint": "#565e74",
+              "inverse-primary": "#bec6e0",
+              "on-primary-fixed": "#131b2e",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              base: "8px",
+              "reading-well": "720px",
+              gutter: "32px",
+              "section-gap": "80px",
+              "margin-edge": "48px",
+            },
+            fontFamily: {
+              "headline-md": ["Inter"],
+              "body-reading": ["Newsreader"],
+              "display-xl": ["Inter"],
+              "citation-note": ["Inter"],
+              "body-standard": ["Newsreader"],
+              "headline-lg": ["Inter"],
+              "label-ui": ["Inter"],
+            },
+            fontSize: {
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-reading": [
+                "20px",
+                { lineHeight: "1.6", fontWeight: "400" },
+              ],
+              "display-xl": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "citation-note": [
+                "12px",
+                { lineHeight: "1.4", fontWeight: "400" },
+              ],
+              "body-standard": [
+                "17px",
+                { lineHeight: "1.5", fontWeight: "400" },
+              ],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-ui": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        background-color: #f7f9fb;
+        color: #191c1e;
+      }
+      .reading-well {
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body class="font-body-standard text-body-standard antialiased">
+    <!-- TopAppBar Section -->
+    <main class="relative pt-8">
+      <!-- Hero Section -->
+      <section
+        class="px-gutter py-section-gap max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center"
+      >
+        <div class="lg:col-span-7 space-y-8">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full"
+          >
+            <span
+              class="material-symbols-outlined text-xs"
+              data-icon="auto_awesome"
+              >auto_awesome</span
+            >
+            <span
+              class="font-label-ui text-[10px] uppercase tracking-widest font-bold"
+              >New: Parallel Synthesis v2.4</span
+            >
+          </div>
+          <h1 class="font-display-xl text-display-xl text-primary max-w-2xl">
+            Autonomous Research for Complex Inquiry
+          </h1>
+          <p
+            class="font-body-reading text-body-reading text-on-surface-variant max-w-xl"
+          >
+            ScholarAI transforms static queries into dynamic research
+            trajectories. Our agents plan multi-step workflows, execute parallel
+            searches across verified databases, and synthesize findings into
+            high-fidelity structured reports.
+          </p>
+          <div class="flex items-center gap-6 pt-4">
+            <button
+              class="px-8 py-3 bg-primary text-on-primary font-label-ui rounded-sm hover:opacity-90 transition-opacity"
+            >
+              Launch Research Agent
+            </button>
+            <button
+              class="flex items-center gap-2 text-primary font-label-ui group"
+            >
+              <span>Watch Methodology</span>
+              <span
+                class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform"
+                data-icon="arrow_forward"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+          <div
+            class="flex items-center gap-8 pt-8 border-t border-outline-variant"
+          >
+            <div class="flex flex-col">
+              <span class="font-headline-md text-headline-md">1.2M+</span>
+              <span class="font-citation-note text-citation-note text-outline"
+                >Verified Sources</span
+              >
+            </div>
+            <div class="flex flex-col">
+              <span class="font-headline-md text-headline-md">98.4%</span>
+              <span class="font-citation-note text-citation-note text-outline"
+                >Accuracy Rating</span
+              >
+            </div>
+            <div class="flex flex-col">
+              <span class="font-headline-md text-headline-md">50ms</span>
+              <span class="font-citation-note text-citation-note text-outline"
+                >Latency Threshold</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Login/Signup Card -->
+        <div class="lg:col-span-5">
+          <div
+            class="bg-surface-container-lowest border border-outline-variant p-10 rounded-lg shadow-sm"
+          >
+            <h2 class="font-headline-md text-headline-md mb-2">
+              Begin Inquiry
+            </h2>
+            <p class="font-label-ui text-on-surface-variant mb-8">
+              Access the secure research environment.
+            </p>
+            <form class="space-y-6">
+              <div class="space-y-1">
+                <label
+                  class="block font-label-ui text-xs text-on-surface-variant uppercase tracking-wider"
+                  >Academic Email</label
+                >
+                <input
+                  class="w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 focus:ring-0 focus:border-primary font-label-ui transition-colors"
+                  placeholder="name@institution.edu"
+                  type="email"
+                />
+              </div>
+              <div class="space-y-1">
+                <label
+                  class="block font-label-ui text-xs text-on-surface-variant uppercase tracking-wider"
+                  >Password</label
+                >
+                <input
+                  class="w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 focus:ring-0 focus:border-primary font-label-ui transition-colors"
+                  placeholder="••••••••"
+                  type="password"
+                />
+              </div>
+              <div class="flex items-center justify-between pt-2">
+                <label class="flex items-center gap-2">
+                  <input
+                    class="w-4 h-4 rounded-sm border-outline-variant text-primary focus:ring-primary"
+                    type="checkbox"
+                  />
+                  <span class="font-citation-note text-on-surface-variant"
+                    >Remember session</span
+                  >
+                </label>
+                <a
+                  class="font-citation-note text-primary hover:underline"
+                  href="#"
+                  >Forgot password?</a
+                >
+              </div>
+              <button
+                class="w-full py-4 bg-primary text-on-primary font-label-ui rounded-sm hover:opacity-90 transition-opacity"
+              >
+                Continue to Library
+              </button>
+              <div class="relative py-4">
+                <div class="absolute inset-0 flex items-center">
+                  <div class="w-full border-t border-outline-variant"></div>
+                </div>
+                <div class="relative flex justify-center text-xs uppercase">
+                  <span class="bg-surface-container-lowest px-2 text-outline"
+                    >Or authenticate with</span
+                  >
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <button
+                  class="flex items-center justify-center gap-2 py-3 border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors font-label-ui"
+                  type="button"
+                >
+                  <img
+                    alt="Google"
+                    class="w-4 h-4"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnwsyz9RMdykLmVA_5Thy5lAWnUNzDVVbDo3T_HJm3ucUVi-y8AwgMNynTHatlG5HZMv2AezgEu-_WWnAhCwM2Q7hqeg6I3Yc7WDbxFUKNFNZ9BgFZ5M2PBHbFzOuOfP09n-eOVqG1iUu07ByRXTTyeWNiKCWvgt3By9NniY2amuSR8rjKkp16UIxo6VkHOh2LrBQ0WxDM-6EvPlCa-DIo-WcbEvBwiHu6UfMSrH_LMSZxiqWCxhI9dNponltaZ9EL9fTiGniUpgb-"
+                  />
+                  Google
+                </button>
+                <button
+                  class="flex items-center justify-center gap-2 py-3 border border-outline-variant rounded-sm hover:bg-surface-container-low transition-colors font-label-ui"
+                  type="button"
+                >
+                  <img
+                    alt="GitHub"
+                    class="w-4 h-4"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsgurSpvM6dDNG5txRBhyGKItg7Rk3IVLCwMe0gioMtn6fbJ5OeLU4ToK1Cc9mhWodyhHJGDDf7-GYEtyMscosVufqV3b6w7dEcAuLxNd7GWMHDjlHWsgyYk_v4UR9HDqXUzjY3l2hU8XHoysQ9Rx6p6HA-TiyZZbI0aW85I4Z26VPSgUJ80WttGyTUnom_hKZN-aF4xN0XExEY3QWwLUMbr6egCVXbRZmtRi4CHVtiTWVE_DX9R6ROSENU5Pz5skt1OKKwOq84eaK"
+                  />
+                  GitHub
+                </button>
+              </div>
+            </form>
+            <p
+              class="mt-8 text-center font-citation-note text-on-surface-variant"
+            >
+              New researcher?
+              <a class="text-primary font-semibold hover:underline" href="#"
+                >Create an account</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Feature Bento Grid -->
+      <section class="bg-surface-container px-gutter py-section-gap">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-16 text-center max-w-2xl mx-auto">
+            <h2 class="font-headline-lg text-headline-lg mb-4">
+              Precision-Engineered Workflow
+            </h2>
+            <p class="font-body-standard text-on-surface-variant text-lg">
+              ScholarAI moves beyond simple LLM generation to deliver
+              verifiable, multi-threaded inquiry.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-12 gap-6 auto-rows-[280px]">
+            <!-- Multi-step Planning -->
+            <div
+              class="md:col-span-8 bg-white border border-outline-variant p-8 flex flex-col justify-between group overflow-hidden"
+            >
+              <div>
+                <div
+                  class="h-10 w-10 bg-primary text-on-primary flex items-center justify-center rounded-sm mb-6"
+                >
+                  <span
+                    class="material-symbols-outlined"
+                    data-icon="account_tree"
+                    >account_tree</span
+                  >
+                </div>
+                <h3 class="font-headline-md text-headline-md mb-2">
+                  Multi-step Planning
+                </h3>
+                <p class="font-body-standard text-on-surface-variant max-w-md">
+                  Our agents decompose complex inquiries into logical sub-tasks,
+                  identifying knowledge gaps and prerequisite search terms
+                  before data retrieval begins.
+                </p>
+              </div>
+              <div
+                class="relative h-24 overflow-hidden mt-4 opacity-40 group-hover:opacity-100 transition-opacity"
+              >
+                <div
+                  class="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-transparent via-primary-container/10 to-transparent"
+                ></div>
+                <div class="flex gap-4 items-center h-full">
+                  <div
+                    class="w-24 h-12 border border-primary/20 rounded-sm flex items-center justify-center font-citation-note"
+                  >
+                    Analysis
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-outline"
+                    data-icon="trending_flat"
+                    >trending_flat</span
+                  >
+                  <div
+                    class="w-24 h-12 border border-primary/20 rounded-sm flex items-center justify-center font-citation-note"
+                  >
+                    Query Dev
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-outline"
+                    data-icon="trending_flat"
+                    >trending_flat</span
+                  >
+                  <div
+                    class="w-24 h-12 border border-primary border-2 rounded-sm flex items-center justify-center font-citation-note font-bold"
+                  >
+                    Execution
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Source Validation -->
+            <div
+              class="md:col-span-4 bg-primary text-on-primary p-8 flex flex-col justify-between"
+            >
+              <div
+                class="h-10 w-10 bg-white text-primary flex items-center justify-center rounded-sm mb-6"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  data-icon="verified_user"
+                  >verified_user</span
+                >
+              </div>
+              <div>
+                <h3 class="font-headline-md text-headline-md mb-2">
+                  Source Validation
+                </h3>
+                <p
+                  class="font-citation-note text-on-primary-container leading-relaxed"
+                >
+                  Cross-referencing every claim against peer-reviewed journals,
+                  institutional archives, and real-time datasets to eliminate
+                  hallucinations.
+                </p>
+              </div>
+              <div class="mt-4 pt-4 border-t border-on-primary-container/20">
+                <div class="flex items-center gap-2">
+                  <div
+                    class="w-2 h-2 rounded-full bg-green-500 animate-pulse"
+                  ></div>
+                  <span
+                    class="font-label-ui text-[10px] tracking-widest uppercase"
+                    >Verified DB Status: Online</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Parallel Search -->
+            <div
+              class="md:col-span-4 bg-surface-container-high border border-outline-variant p-8 flex flex-col justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-4xl mb-6 text-primary"
+                data-icon="dynamic_feed"
+                >dynamic_feed</span
+              >
+              <h3 class="font-headline-md text-headline-md mb-2">
+                Parallel Search
+              </h3>
+              <p class="font-citation-note text-on-surface-variant">
+                Asynchronous retrieval across multiple nodes ensures your
+                research is thorough and completed in seconds, not hours.
+              </p>
+            </div>
+            <!-- Structured Reports -->
+            <div
+              class="md:col-span-8 bg-white border border-outline-variant p-8 flex items-center gap-8 group"
+            >
+              <div class="flex-1">
+                <h3 class="font-headline-md text-headline-md mb-2">
+                  Structured Reports
+                </h3>
+                <p class="font-body-standard text-on-surface-variant">
+                  Exports in LaTeX, Markdown, and PDF formats. Automatically
+                  formatted citations in APA, MLA, or Chicago styles with
+                  integrated DOI linking.
+                </p>
+                <div class="flex gap-2 mt-6">
+                  <span
+                    class="px-2 py-1 bg-surface text-[10px] border border-outline-variant rounded-sm font-label-ui uppercase"
+                    >APA 7</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-surface text-[10px] border border-outline-variant rounded-sm font-label-ui uppercase"
+                    >Chicago</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-surface text-[10px] border border-outline-variant rounded-sm font-label-ui uppercase"
+                    >LaTeX</span
+                  >
+                </div>
+              </div>
+              <div
+                class="hidden sm:block w-48 h-full bg-slate-50 border-l border-outline-variant p-4"
+              >
+                <div class="space-y-2">
+                  <div class="h-2 w-full bg-slate-200 rounded-full"></div>
+                  <div class="h-2 w-3/4 bg-slate-200 rounded-full"></div>
+                  <div class="h-2 w-5/6 bg-slate-200 rounded-full"></div>
+                  <div class="h-2 w-1/2 bg-slate-200 rounded-full mt-4"></div>
+                  <div class="h-2 w-full bg-slate-200 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Method Section (Reading Well) -->
+      <section class="px-gutter py-section-gap">
+        <div class="reading-well">
+          <span
+            class="font-label-ui text-xs text-primary uppercase tracking-[0.2em] block mb-8 text-center"
+            >Our Methodology</span
+          >
+          <h2 class="font-headline-lg text-headline-lg text-center mb-12">
+            The Agentic Research Loop
+          </h2>
+          <div class="space-y-16">
+            <div class="flex gap-8">
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border border-primary font-display-xl text-lg"
+              >
+                01
+              </div>
+              <div>
+                <h3 class="font-headline-md text-headline-md mb-3">
+                  Decomposition
+                </h3>
+                <p class="font-body-reading text-on-surface-variant">
+                  The system analyzes the core intent of your inquiry. It
+                  doesn't just search for keywords; it maps the intellectual
+                  landscape, identifying key debates, seminal papers, and
+                  emerging trends that need to be addressed.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-8">
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border border-primary font-display-xl text-lg"
+              >
+                02
+              </div>
+              <div>
+                <h3 class="font-headline-md text-headline-md mb-3">
+                  Active Retrieval
+                </h3>
+                <p class="font-body-reading text-on-surface-variant">
+                  Using secure APIs and advanced web-crawling technology,
+                  ScholarAI accesses proprietary and public academic databases
+                  simultaneously. It evaluates source credibility on-the-fly,
+                  prioritizing high-impact factor journals and verified
+                  institutional repositories.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-8">
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border border-primary font-display-xl text-lg"
+              >
+                03
+              </div>
+              <div>
+                <h3 class="font-headline-md text-headline-md mb-3">
+                  Dialectical Synthesis
+                </h3>
+                <p class="font-body-reading text-on-surface-variant">
+                  Finally, the system reconciles conflicting data points. It
+                  highlights areas of consensus and divergence, creating a
+                  nuanced synthesis that reflects the true complexity of the
+                  subject matter, complete with in-line citations.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-20 p-8 border border-outline-variant bg-surface-container-low flex flex-col items-center text-center"
+          >
+            <span
+              class="material-symbols-outlined text-4xl mb-4"
+              data-icon="auto_stories"
+              >auto_stories</span
+            >
+            <p class="font-body-standard italic text-on-surface-variant mb-6">
+              "ScholarAI has reduced our literature review cycle from three
+              weeks to under forty-five minutes, without sacrificing the depth
+              of critical inquiry."
+            </p>
+            <span
+              class="font-label-ui text-xs uppercase tracking-wider font-bold"
+              >— Dr. Elena Sterling, Institute for Advanced Research</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Final CTA -->
+      <section class="bg-primary text-on-primary py-section-gap px-gutter">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="font-display-xl text-display-xl mb-6">
+            Ready to expand your intellectual horizons?
+          </h2>
+          <p
+            class="font-body-reading text-on-primary-container mb-12 opacity-80"
+          >
+            Join 50,000+ researchers using ScholarAI to accelerate discovery and
+            minimize manual synthesis.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <button
+              class="w-full sm:w-auto px-10 py-4 bg-white text-primary font-label-ui rounded-sm hover:bg-opacity-90 transition-all font-bold"
+            >
+              Start Your First Inquiry
+            </button>
+            <button
+              class="w-full sm:w-auto px-10 py-4 border border-white/20 text-white font-label-ui rounded-sm hover:bg-white/10 transition-all"
+            >
+              Request Institutional Demo
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-outline-variant py-12 px-gutter">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+        <div class="space-y-4">
+          <span class="text-xl font-bold tracking-tight text-primary"
+            >ScholarAI</span
+          >
+          <p class="font-citation-note text-on-surface-variant">
+            The future of autonomous academic research and high-fidelity
+            knowledge synthesis.
+          </p>
+        </div>
+        <div>
+          <h4
+            class="font-label-ui text-xs uppercase tracking-widest font-bold mb-6"
+          >
+            Platform
+          </h4>
+          <ul class="space-y-3 font-citation-note text-on-surface-variant">
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Agents</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Library</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Integrations</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >API Docs</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4
+            class="font-label-ui text-xs uppercase tracking-widest font-bold mb-6"
+          >
+            Resources
+          </h4>
+          <ul class="space-y-3 font-citation-note text-on-surface-variant">
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Methodology Paper</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Community Forum</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Help Center</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Status</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4
+            class="font-label-ui text-xs uppercase tracking-widest font-bold mb-6"
+          >
+            Security
+          </h4>
+          <ul class="space-y-3 font-citation-note text-on-surface-variant">
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Ethics Guidelines</a
+              >
+            </li>
+            <li>
+              <a class="hover:text-primary transition-colors" href="#"
+                >Compliance</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto mt-12 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <p class="font-citation-note text-outline">
+          © 2024 ScholarAI Research Technologies. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a class="text-outline hover:text-primary transition-colors" href="#"
+            ><span class="material-symbols-outlined" data-icon="language"
+              >language</span
+            ></a
+          >
+          <a class="text-outline hover:text-primary transition-colors" href="#"
+            ><span class="material-symbols-outlined" data-icon="share"
+              >share</span
+            ></a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

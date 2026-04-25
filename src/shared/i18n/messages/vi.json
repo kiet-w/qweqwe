@@ -1,0 +1,401 @@
+{
+  "metadata": {
+    "title": "ScholarAI - Nghien cuu sau. Chiet xuat su that.",
+    "description": "ScholarAI la landing page nghien cuu duoc xay dung bang Next.js App Router."
+  },
+  "agentTracking": {
+    "metadata": {
+      "title": "ScholarAI | Theo doi agent",
+      "description": "Workspace theo doi agent truc tiep cho qua trinh nghien cuu dang chay va ban nhap dang duoc tong hop."
+    },
+    "brandSubtext": "Che do nghien cuu sau",
+    "newInquiry": "Truy van moi",
+    "navigation": {
+      "dashboard": "Bang dieu khien",
+      "agentTracing": "Theo doi agent",
+      "researchReports": "Bao cao nghien cuu",
+      "library": "Thu vien",
+      "settings": "Cai dat",
+      "documentation": "Tai lieu"
+    },
+    "activeInquiry": {
+      "eyebrow": "Truy van dang chay",
+      "title": "Tac dong cua CRISPR-Cas9 den dot bien ngoai muc tieu trong te bao soma"
+    },
+    "executionPlan": {
+      "heading": "Ke hoach thuc thi agent",
+      "steps": [
+        {
+          "status": "completed",
+          "title": "Xac dinh tham so tim kiem cot loi va thuat ngu chinh",
+          "meta": "Hoan thanh trong 1.2s"
+        },
+        {
+          "status": "completed",
+          "title": "Truy xuat tai lieu goc tu PubMed va BioRxiv",
+          "meta": "Tim thay 142 bai bao phu hop"
+        },
+        {
+          "status": "active",
+          "title": "Phan tich cac phuong phap phat hien dot bien ngoai muc tieu",
+          "details": [
+            "Danh gia hieu qua GUIDE-seq",
+            "So sanh voi du lieu CIRCLE-seq"
+          ]
+        },
+        {
+          "status": "pending",
+          "title": "Tong hop ket qua ve ty le dot bien",
+          "meta": "Dang cho cac tac vu con"
+        },
+        {
+          "status": "pending",
+          "title": "Soan bao cao phan tich tong hop"
+        }
+      ]
+    },
+    "processFeed": {
+      "heading": "Feed tien trinh truc tiep",
+      "pause": "Tam dung",
+      "exportLogs": "Xuat logs",
+      "entries": [
+        {
+          "type": "papers",
+          "time": "10:42:01",
+          "text": "Da khoi tao phan tich song song 5 bai bao chinh lien quan den phuong phap GUIDE-seq.",
+          "papers": ["Tsai et al., 2015", "Kim et al., 2019"]
+        },
+        {
+          "type": "insight",
+          "time": "10:42:15",
+          "prefix": "Insight rut ra:",
+          "text": "Tsai et al. cho thay GUIDE-seq co the nhan dien diem cat ngoai muc tieu voi tan suat thap toi 0.1%."
+        },
+        {
+          "type": "status",
+          "time": "10:42:18",
+          "text": "Dang doi chieu cac khang dinh voi nhung bai tong quan sinh hoc cau truc gan day..."
+        }
+      ],
+      "steerLabel": "Dieu huong agent (Tuy chon)",
+      "steerPlaceholder": "Vi du: 'Tap trung cu the vao ung dung in vivo'"
+    },
+    "draftPreview": {
+      "heading": "Xem truoc ban nhap truc tiep",
+      "title": "Dot bien ngoai muc tieu cua CRISPR-Cas9: Su tien hoa cua phuong phap",
+      "paragraphs": [
+        "Do chinh xac cua nuclease CRISPR-Cas9 duoc quyet dinh boi guide RNA, tuy nhien cat ngoai muc tieu van la tro ngai lon cho viec chuyen dich lam sang. Cac mo hinh du doan ban dau dua rat nhieu vao in silico, nhung thuong khong phan anh duoc dong hoc chromatin theo tung loai te bao."
+      ],
+      "composing": "Agent dang tong hop phan nay dua tren phan tich so sanh giua cac phuong phap phat hien..."
+    }
+  },
+  "dashboard": {
+    "metadata": {
+      "title": "ScholarAI | Bang dieu khien nghien cuu",
+      "description": "Workspace ScholarAI cho van hanh nghien cuu dang chay, xac minh nguon, va xuat bao cao."
+    },
+    "badge": "Workspace dang hoat dong: 12 pipeline da xac minh",
+    "heading": "Bang dieu khien nghien cuu",
+    "description": "Lop dieu phoi trung tam cho truy van song song. Theo doi workstream dang chay, suc khoe nguon, va dua phat hien gia tri cao vao ho so xuat ban ma khong can roi dashboard.",
+    "primaryCta": "Khoi tao chu ky nghien cuu moi",
+    "secondaryCta": "Mo phuong phap",
+    "overviewLabel": "Be mat dieu khien",
+    "overviewTitle": "Workspace dang hoat dong",
+    "overviewDescription": "Phien to chuc da duoc xac thuc. Moi hang doi ben duoi dang dong bo voi do thi truy xuat va cac moc tong hop moi nhat.",
+    "stats": [
+      {
+        "value": "24",
+        "label": "Luong dang chay"
+      },
+      {
+        "value": "312",
+        "label": "Nguon da dong bo"
+      },
+      {
+        "value": "8",
+        "label": "Bao cao nhap"
+      }
+    ],
+    "workspace": {
+      "heading": "Luong nghien cuu hom nay",
+      "description": "Cac huong dieu tra uu tien dang duoc xu ly.",
+      "items": [
+        {
+          "title": "Tong quan biomarker ung thu",
+          "meta": "12 nguon da xac minh • dang tong hop"
+        },
+        {
+          "title": "Ra soat chinh sach tai chinh khi hau",
+          "meta": "4 mau thuan da duoc danh dau • can analyst xem lai"
+        },
+        {
+          "title": "Ho so patent khoa hoc vat lieu",
+          "meta": "Goi xuat da san sang • doi chieu DOI hoan tat"
+        }
+      ]
+    },
+    "featureGrid": {
+      "heading": "Quy trinh duoc ky thuat hoa chinh xac",
+      "description": "Dashboard giu cung mo hinh van hanh hoc thuat tu reference canvas, nhung chuyen cot phai tu truy cap sang thuc thi nghien cuu.",
+      "researchOps": {
+        "title": "Van hanh nghien cuu",
+        "description": "Cac truy van phuc tap lien tuc duoc phan tach thanh tac vu phoi hop de doi ngu co the kiem tra lap luan, do phu bang chung, va tien do tong hop tren cung mot man hinh.",
+        "steps": ["Khoanh vung", "Truy xuat", "Tong hop"]
+      },
+      "sourceHealth": {
+        "title": "Suc khoe nguon",
+        "description": "Doi chieu tap chi, kho luu tru, va kho chinh sach theo thoi gian thuc de dam bao moi ket luan ve sau deu co nen tang ro rang.",
+        "status": "Mang xac minh: On dinh"
+      },
+      "liveQueues": {
+        "title": "Hang doi truc tiep",
+        "description": "Tien trinh truy xuat song song, phat hien mau thuan, va tao tom tat luon hien thi de nghen mach duoc nhan ra truoc khi giao bao cao."
+      },
+      "exportCenter": {
+        "title": "Trung tam xuat ban",
+        "description": "Dong goi phat hien da xac minh thanh tai lieu san sang trinh bay, kem trich dan co cau truc va dau vet bang chung ro rang.",
+        "tags": ["PDF", "Markdown", "Nhat ky DOI"]
+      }
+    },
+    "workflow": {
+      "eyebrow": "Vong lap thuc thi",
+      "heading": "Cach nghien cuu dang chay di qua dashboard",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Phan loai",
+          "description": "Truy van moi duoc xep uu tien theo muc do khan, do sau bang chung, va cac xung dot chua giai quyet de he thong cap phat bang thong truy xuat hop ly."
+        },
+        {
+          "number": "02",
+          "title": "Xac minh",
+          "description": "Moi goi nguon duoc kiem tra voi kho luu tru to chuc va corpora binh duyet truoc khi cac khang dinh duoc dua len lop tong hop."
+        },
+        {
+          "number": "03",
+          "title": "Ban giao",
+          "description": "Khi chat luong tin hieu dat nguong, ket qua duoc ket xuat thanh bao cao co the xuat ban, kem lien ket truy vet den bang chung goc."
+        }
+      ],
+      "quote": "\"Dashboard mang lai mot be mat nghien cuu duy nhat noi toc do truy xuat va do chat che bang chung co the cung ton tai.\"",
+      "author": "— Truong van hanh nghien cuu, chuong trinh pilot ScholarAI"
+    },
+    "finalCta": {
+      "heading": "Giu truy van tiep tuc chay",
+      "description": "Chuyen tu truy cap bao mat sang thuc thi lien tuc voi workspace duoc thiet ke cho chuong trinh nghien cuu dai hoi va nang bang chung cao.",
+      "primary": "Tao research brief",
+      "secondary": "Xem hang doi xuat ban"
+    },
+    "footer": {
+      "description": "Bang dieu khien van hanh cho nghien cuu hoc thuat tu dong va tong hop gan bang chung.",
+      "columns": [
+        {
+          "heading": "Workspace",
+          "links": ["Hang doi truc tiep", "Xuat ban", "Suc khoe nguon", "Audit trail"]
+        },
+        {
+          "heading": "Tai nguyen",
+          "links": ["Phuong phap", "Ghi chu doi ngu", "Trung tam ho tro", "Trang thai"]
+        },
+        {
+          "heading": "Quan tri",
+          "links": ["Rieng tu", "Tuan thu", "Dao duc", "Kiem soat truy cap"]
+        }
+      ],
+      "copyright": "© 2024 ScholarAI Research Technologies. Moi quyen duoc bao luu."
+    }
+  },
+  "loginPage": {
+    "metadata": {
+      "title": "ScholarAI | Nghien cuu tu dong cho truy van phuc tap",
+      "description": "Trang landing va truy cap ScholarAI cho nghien cuu hoc thuat tu dong."
+    },
+    "badge": "Moi: Parallel Synthesis v2.4",
+    "heroHeading": "Nghien cuu tu dong cho truy van phuc tap",
+    "heroDescription": "ScholarAI bien cac truy van tinh thanh hanh trinh nghien cuu dong. He thong agent lap ke hoach nhieu buoc, thuc thi tim kiem song song tren cac co so du lieu da xac minh, va tong hop ket qua thanh bao cao co cau truc do chinh xac cao.",
+    "launchCta": "Khoi dong Research Agent",
+    "methodologyCta": "Xem phuong phap",
+    "stats": [
+      {
+        "value": "1.2M+",
+        "label": "Nguon da xac minh"
+      },
+      {
+        "value": "98.4%",
+        "label": "Ty le chinh xac"
+      },
+      {
+        "value": "50ms",
+        "label": "Nguong do tre"
+      }
+    ],
+    "form": {
+      "heading": "Bat dau truy van",
+      "description": "Truy cap moi truong nghien cuu bao mat.",
+      "emailLabel": "Email hoc thuat",
+      "emailPlaceholder": "name@institution.edu",
+      "passwordLabel": "Mat khau",
+      "passwordPlaceholder": "••••••••",
+      "rememberSession": "Ghi nho phien",
+      "forgotPassword": "Quen mat khau?",
+      "submitLabel": "Tiep tuc vao thu vien",
+      "divider": "Hoac xac thuc bang",
+      "google": "Google",
+      "github": "GitHub",
+      "signupPrompt": "Ban moi tham gia?",
+      "signupCta": "Tao tai khoan"
+    },
+    "featureGrid": {
+      "heading": "Quy trinh duoc ky thuat hoa chinh xac",
+      "description": "ScholarAI vuot qua cach sinh noi dung LLM don gian de mang lai quy trinh truy van co the kiem chung va da luong.",
+      "multiStepPlanning": {
+        "title": "Lap ke hoach nhieu buoc",
+        "description": "Agent tach truy van phuc tap thanh cac tac vu logic, xac dinh khoang trong tri thuc va cac cum tu tien de truoc khi bat dau truy xuat du lieu.",
+        "steps": ["Phan tich", "Phat trien query", "Thuc thi"]
+      },
+      "sourceValidation": {
+        "title": "Xac minh nguon",
+        "description": "Doi chieu moi khang dinh voi tap chi binh duyet, kho luu tru to chuc, va du lieu thoi gian thuc de giam hallucination.",
+        "status": "Trang thai DB xac minh: Online"
+      },
+      "parallelSearch": {
+        "title": "Tim kiem song song",
+        "description": "Truy xuat bat dong bo tren nhieu node giup nghien cuu day du va hoan thanh trong vai giay thay vi hang gio."
+      },
+      "structuredReports": {
+        "title": "Bao cao co cau truc",
+        "description": "Xuat ra LaTeX, Markdown, va PDF. Trich dan duoc dinh dang tu dong theo APA, MLA, hoac Chicago, kem lien ket DOI.",
+        "tags": ["APA 7", "Chicago", "LaTeX"]
+      }
+    },
+    "methodology": {
+      "eyebrow": "Phuong phap cua chung toi",
+      "heading": "Vong lap nghien cuu agentic",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Phan ra",
+          "description": "He thong phan tich y dinh cot loi cua truy van. No khong chi tim theo tu khoa ma con lap ban do canh quan tri thuc, xac dinh tranh luan chinh, bai bao nen tang, va xu huong moi can duoc xem xet."
+        },
+        {
+          "number": "02",
+          "title": "Truy xuat chu dong",
+          "description": "Su dung API bao mat va ky thuat web crawling nang cao, ScholarAI truy cap dong thoi cac co so du lieu hoc thuat cong khai va doc quyen. He thong danh gia do tin cay cua nguon ngay trong luong xu ly."
+        },
+        {
+          "number": "03",
+          "title": "Tong hop bien chung",
+          "description": "Cuoi cung, he thong hoa giai cac diem du lieu mau thuan. No lam ro diem dong thuan va khac biet, tao ra ban tong hop co sac thai va co trich dan noi tuyen."
+        }
+      ],
+      "quote": "\"ScholarAI da rut ngan chu ky tong quan tai lieu tu ba tuan xuong duoi bon muoi lam phut ma van giu do sau phan tich.\"",
+      "author": "— TS. Elena Sterling, Vien Nghien cuu Cap cao"
+    },
+    "finalCta": {
+      "heading": "San sang mo rong bien do tri tue cua ban?",
+      "description": "Tham gia cung hon 50,000 nha nghien cuu dang dung ScholarAI de tang toc kham pha va giam tong hop thu cong.",
+      "primary": "Bat dau truy van dau tien",
+      "secondary": "Yeu cau demo to chuc"
+    },
+    "footer": {
+      "description": "Tuong lai cua nghien cuu hoc thuat tu dong va tong hop tri thuc do chinh xac cao.",
+      "columns": [
+        {
+          "heading": "Nen tang",
+          "links": ["Agents", "Thu vien", "Tich hop", "Tai lieu API"]
+        },
+        {
+          "heading": "Tai nguyen",
+          "links": ["Tai lieu phuong phap", "Cong dong", "Trung tam ho tro", "Trang thai"]
+        },
+        {
+          "heading": "Bao mat",
+          "links": ["Chinh sach rieng tu", "Dieu khoan dich vu", "Huong dan dao duc", "Tuan thu"]
+        }
+      ],
+      "copyright": "© 2024 ScholarAI Research Technologies. Moi quyen duoc bao luu."
+    }
+  },
+  "nav": {
+    "brand": "ScholarAI",
+    "features": "Tinh nang",
+    "methodology": "Phuong phap",
+    "pricing": "Bang gia",
+    "institutions": "To chuc",
+    "login": "Dang nhap",
+    "getStarted": "Bat dau"
+  },
+  "hero": {
+    "heading": "Nghien cuu sau. Chiet xuat su that.",
+    "description": "Mot cong cu tinh toan thong minh duoc thiet ke cho tieu chuan hoc thuat nghiem ngat. Hay mo ta cau hoi de bat dau truy xuat va tong hop song song tren cac kho tri thuc toan cau.",
+    "label": "Chu de nghien cuu",
+    "placeholder": "Mo ta hien tuong, thu nghiem lam sang, hoac khung ly thuyet ban muon nghien cuu...",
+    "attach": "Dinh kem tai lieu",
+    "settings": "Thiet lap tham so",
+    "cta": "Bat dau nghien cuu",
+    "loginCta": "Vao cong nghien cuu",
+    "loginHint": "Dang nhap bang tai khoan to chuc truoc khi khoi tao phien nghien cuu.",
+    "evidenceA": "Truy cap hon 200M bai bao binh duyet",
+    "evidenceB": "Tong hop theo thoi gian thuc"
+  },
+  "login": {
+    "eyebrow": "Dang nhap to chuc",
+    "heading": "Vao workspace nghien cuu bang ho so truy cap bao mat.",
+    "description": "Khu vuc dang nhap duoc lay cam hung tu mau tham chieu `login.html`, nhung da duoc dua vao landing de luong kham pha va truy cap lien mach hon.",
+    "welcome": "Chao mung den ScholarAI",
+    "subtitle": "Chon cach truy cap phu hop ben duoi",
+    "loginTab": "Dang nhap",
+    "signupTab": "Dang ky",
+    "google": "Google",
+    "github": "GitHub",
+    "orContinue": "Hoac tiep tuc voi",
+    "features": [
+      {
+        "title": "Truy xuat ngu nghia o quy mo lon",
+        "description": "Tim kiem tren tap hop bai bao binh duyet voi xep hang duoc toi uu cho bang chung hoc thuat."
+      },
+      {
+        "title": "Tong hop gan nguon",
+        "description": "Tao bao cao co cau truc, kem trich dan ro rang va diem quay lai tai lieu goc."
+      }
+    ],
+    "emailLabel": "Email to chuc",
+    "emailPlaceholder": "scholar@university.edu",
+    "passwordLabel": "Mat khau",
+    "passwordPlaceholder": "Nhap mat khau",
+    "forgotPassword": "Quen mat khau?",
+    "submitLabel": "Dang nhap",
+    "helper": "Dung thong tin to chuc de mo lai workspace da luu, luong nghien cuu, va cac dossier da chia se.",
+    "agreementPrefix": "Khi tiep tuc, ban dong y voi",
+    "termsLabel": "Dieu khoan dich vu",
+    "agreementJoiner": "va",
+    "privacyLabel": "Chinh sach rieng tu"
+  },
+  "methodology": {
+    "heading": "Mot quy trinh chat che cho cac truy van phuc tap.",
+    "phases": [
+      {
+        "label": "Giai doan 01",
+        "title": "Lap ke hoach va phan ra",
+        "description": "He thong tach gia thuyet phuc tap thanh cac truy van con co cau truc, tao thanh ban do logic cho qua trinh dieu tra."
+      },
+      {
+        "label": "Giai doan 02",
+        "title": "Truy xuat song song",
+        "description": "Cac truy van con duoc thuc thi dong thoi tren nhieu co so du lieu hoc thuat de dam bao do bao phu va tinh khach quan cua nguon."
+      },
+      {
+        "label": "Giai doan 03",
+        "title": "Dong thuan va bao cao",
+        "description": "Doi chieu cac khang dinh de tim diem dong thuan, phat hien mau thuan, va tao ho so tong hop co trich dan day du."
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2024 ScholarAI. Duoc thiet ke cho do chinh xac hoc thuat.",
+    "privacy": "Quyen rieng tu",
+    "terms": "Dieu khoan",
+    "apiDocs": "Tai lieu API",
+    "status": "Trang thai"
+  }
+}

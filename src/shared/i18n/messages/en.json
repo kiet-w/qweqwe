@@ -1,0 +1,401 @@
+{
+  "metadata": {
+    "title": "ScholarAI - Deep Research. Distilled to Truth.",
+    "description": "ScholarAI is a research landing page built with the Next.js App Router."
+  },
+  "agentTracking": {
+    "metadata": {
+      "title": "ScholarAI | Agent Tracing",
+      "description": "Live agent tracing workspace for active research execution and draft monitoring."
+    },
+    "brandSubtext": "Deep Research Mode",
+    "newInquiry": "New Inquiry",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "agentTracing": "Agent Tracing",
+      "researchReports": "Research Reports",
+      "library": "Library",
+      "settings": "Settings",
+      "documentation": "Documentation"
+    },
+    "activeInquiry": {
+      "eyebrow": "Active Inquiry",
+      "title": "Impact of CRISPR-Cas9 on off-target mutations in somatic cells"
+    },
+    "executionPlan": {
+      "heading": "Agent Execution Plan",
+      "steps": [
+        {
+          "status": "completed",
+          "title": "Define core search parameters and key terminology",
+          "meta": "Completed in 1.2s"
+        },
+        {
+          "status": "completed",
+          "title": "Retrieve primary literature from PubMed and BioRxiv",
+          "meta": "Found 142 relevant papers"
+        },
+        {
+          "status": "active",
+          "title": "Analyze methodologies for off-target detection",
+          "details": [
+            "Evaluating GUIDE-seq efficacy",
+            "Comparing with CIRCLE-seq data"
+          ]
+        },
+        {
+          "status": "pending",
+          "title": "Synthesize findings on mutation rates",
+          "meta": "Pending sub-tasks"
+        },
+        {
+          "status": "pending",
+          "title": "Draft comprehensive analysis report"
+        }
+      ]
+    },
+    "processFeed": {
+      "heading": "Live Process Feed",
+      "pause": "Pause",
+      "exportLogs": "Export Logs",
+      "entries": [
+        {
+          "type": "papers",
+          "time": "10:42:01",
+          "text": "Initiated parallel analysis of 5 key papers regarding GUIDE-seq methodologies.",
+          "papers": ["Tsai et al., 2015", "Kim et al., 2019"]
+        },
+        {
+          "type": "insight",
+          "time": "10:42:15",
+          "prefix": "Insight extracted:",
+          "text": "Tsai et al. report that GUIDE-seq can identify off-target cleavage sites with frequencies as low as 0.1%."
+        },
+        {
+          "type": "status",
+          "time": "10:42:18",
+          "text": "Cross-validating claims against recent structural biology reviews..."
+        }
+      ],
+      "steerLabel": "Steer Agent Focus (Optional)",
+      "steerPlaceholder": "e.g., 'Focus specifically on in vivo applications'"
+    },
+    "draftPreview": {
+      "heading": "Live Draft Preview",
+      "title": "CRISPR-Cas9 Off-Target Mutations: Methodological Evolution",
+      "paragraphs": [
+        "The precision of CRISPR-Cas9 nucleases is dictated by the guide RNA (gRNA), yet off-target cleavage remains a significant barrier to clinical translation. Early predictive models relied heavily on in silico prediction, which often failed to capture cell-type-specific chromatin dynamics."
+      ],
+      "composing": "Agent is actively composing this section based on comparative analysis of detection methods..."
+    }
+  },
+  "dashboard": {
+    "metadata": {
+      "title": "ScholarAI | Research Command Dashboard",
+      "description": "ScholarAI workspace for active research operations, source validation, and report exports."
+    },
+    "badge": "Workspace live: 12 verified pipelines",
+    "heading": "Research Command Dashboard",
+    "description": "Your active command layer for parallel inquiry. Review live workstreams, watch source integrity, and move high-signal findings into exportable dossiers without leaving the dashboard.",
+    "primaryCta": "Launch New Research Cycle",
+    "secondaryCta": "Open Methodology",
+    "overviewLabel": "Control Surface",
+    "overviewTitle": "Active Workspace",
+    "overviewDescription": "Institutional session authenticated. All queues below are synchronized with your latest retrieval graph and synthesis checkpoints.",
+    "stats": [
+      {
+        "value": "24",
+        "label": "Active Threads"
+      },
+      {
+        "value": "312",
+        "label": "Sources Synced"
+      },
+      {
+        "value": "8",
+        "label": "Reports in Draft"
+      }
+    ],
+    "workspace": {
+      "heading": "Today's research lanes",
+      "description": "Prioritized investigations currently in motion.",
+      "items": [
+        {
+          "title": "Oncology biomarker review",
+          "meta": "12 sources validated • synthesis in progress"
+        },
+        {
+          "title": "Climate finance policy scan",
+          "meta": "4 contradictions flagged • analyst review needed"
+        },
+        {
+          "title": "Materials science patent brief",
+          "meta": "Export packet ready • DOI cross-links complete"
+        }
+      ]
+    },
+    "featureGrid": {
+      "heading": "Precision-Engineered Workflow",
+      "description": "The dashboard preserves the same scholar-grade operating model as the reference canvas, but shifts the right rail from access control to research execution.",
+      "researchOps": {
+        "title": "Research Operations",
+        "description": "Complex investigations are continuously decomposed into coordinated tasks so your team can audit reasoning, evidence coverage, and synthesis status in one view.",
+        "steps": ["Scope", "Retrieve", "Synthesize"]
+      },
+      "sourceHealth": {
+        "title": "Source Health",
+        "description": "Cross-checking journals, repositories, and policy archives in real time to keep every downstream conclusion grounded.",
+        "status": "Validation Mesh: Stable"
+      },
+      "liveQueues": {
+        "title": "Live Queues",
+        "description": "Parallel retrieval, contradiction detection, and summary generation stay visible so bottlenecks are caught before report delivery."
+      },
+      "exportCenter": {
+        "title": "Export Center",
+        "description": "Package validated findings into presentation-ready deliverables with structured citations and traceable evidence provenance.",
+        "tags": ["PDF", "Markdown", "DOI Logs"]
+      }
+    },
+    "workflow": {
+      "eyebrow": "Execution Loop",
+      "heading": "How active research moves through the dashboard",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Triage",
+          "description": "Incoming questions are ranked by urgency, evidence depth, and unresolved conflicts so the system knows where to allocate retrieval bandwidth first."
+        },
+        {
+          "number": "02",
+          "title": "Verification",
+          "description": "Each source packet is checked against institutional repositories and peer-reviewed corpora before its claims are promoted into the synthesis layer."
+        },
+        {
+          "number": "03",
+          "title": "Delivery",
+          "description": "Once signal quality reaches threshold, findings are assembled into exportable reports with clear traceability back to the underlying evidence."
+        }
+      ],
+      "quote": "\"The dashboard gives our team a single research surface where retrieval speed and evidentiary rigor finally coexist.\"",
+      "author": "— Research Ops Lead, ScholarAI Pilot Program"
+    },
+    "finalCta": {
+      "heading": "Keep the inquiry moving",
+      "description": "Move from secure access to continuous execution with a workspace built for long-form, evidence-heavy research programs.",
+      "primary": "Create Research Brief",
+      "secondary": "Review Export Queue"
+    },
+    "footer": {
+      "description": "Operational dashboard for autonomous academic research and evidence-linked synthesis.",
+      "columns": [
+        {
+          "heading": "Workspace",
+          "links": ["Live Queues", "Exports", "Source Health", "Audit Trail"]
+        },
+        {
+          "heading": "Resources",
+          "links": ["Methodology", "Team Notes", "Help Center", "Status"]
+        },
+        {
+          "heading": "Governance",
+          "links": ["Privacy", "Compliance", "Ethics", "Access Control"]
+        }
+      ],
+      "copyright": "© 2024 ScholarAI Research Technologies. All rights reserved."
+    }
+  },
+  "loginPage": {
+    "metadata": {
+      "title": "ScholarAI | Autonomous Research for Complex Inquiry",
+      "description": "ScholarAI landing and access page for autonomous academic research."
+    },
+    "badge": "New: Parallel Synthesis v2.4",
+    "heroHeading": "Autonomous Research for Complex Inquiry",
+    "heroDescription": "ScholarAI transforms static queries into dynamic research trajectories. Our agents plan multi-step workflows, execute parallel searches across verified databases, and synthesize findings into high-fidelity structured reports.",
+    "launchCta": "Launch Research Agent",
+    "methodologyCta": "Watch Methodology",
+    "stats": [
+      {
+        "value": "1.2M+",
+        "label": "Verified Sources"
+      },
+      {
+        "value": "98.4%",
+        "label": "Accuracy Rating"
+      },
+      {
+        "value": "50ms",
+        "label": "Latency Threshold"
+      }
+    ],
+    "form": {
+      "heading": "Begin Inquiry",
+      "description": "Access the secure research environment.",
+      "emailLabel": "Academic Email",
+      "emailPlaceholder": "name@institution.edu",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "rememberSession": "Remember session",
+      "forgotPassword": "Forgot password?",
+      "submitLabel": "Continue to Library",
+      "divider": "Or authenticate with",
+      "google": "Google",
+      "github": "GitHub",
+      "signupPrompt": "New researcher?",
+      "signupCta": "Create an account"
+    },
+    "featureGrid": {
+      "heading": "Precision-Engineered Workflow",
+      "description": "ScholarAI moves beyond simple LLM generation to deliver verifiable, multi-threaded inquiry.",
+      "multiStepPlanning": {
+        "title": "Multi-step Planning",
+        "description": "Our agents decompose complex inquiries into logical sub-tasks, identifying knowledge gaps and prerequisite search terms before data retrieval begins.",
+        "steps": ["Analysis", "Query Dev", "Execution"]
+      },
+      "sourceValidation": {
+        "title": "Source Validation",
+        "description": "Cross-referencing every claim against peer-reviewed journals, institutional archives, and real-time datasets to eliminate hallucinations.",
+        "status": "Verified DB Status: Online"
+      },
+      "parallelSearch": {
+        "title": "Parallel Search",
+        "description": "Asynchronous retrieval across multiple nodes ensures your research is thorough and completed in seconds, not hours."
+      },
+      "structuredReports": {
+        "title": "Structured Reports",
+        "description": "Exports in LaTeX, Markdown, and PDF formats. Automatically formatted citations in APA, MLA, or Chicago styles with integrated DOI linking.",
+        "tags": ["APA 7", "Chicago", "LaTeX"]
+      }
+    },
+    "methodology": {
+      "eyebrow": "Our Methodology",
+      "heading": "The Agentic Research Loop",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Decomposition",
+          "description": "The system analyzes the core intent of your inquiry. It doesn't just search for keywords; it maps the intellectual landscape, identifying key debates, seminal papers, and emerging trends that need to be addressed."
+        },
+        {
+          "number": "02",
+          "title": "Active Retrieval",
+          "description": "Using secure APIs and advanced web-crawling technology, ScholarAI accesses proprietary and public academic databases simultaneously. It evaluates source credibility on-the-fly, prioritizing high-impact factor journals and verified institutional repositories."
+        },
+        {
+          "number": "03",
+          "title": "Dialectical Synthesis",
+          "description": "Finally, the system reconciles conflicting data points. It highlights areas of consensus and divergence, creating a nuanced synthesis that reflects the true complexity of the subject matter, complete with in-line citations."
+        }
+      ],
+      "quote": "\"ScholarAI has reduced our literature review cycle from three weeks to under forty-five minutes, without sacrificing the depth of critical inquiry.\"",
+      "author": "— Dr. Elena Sterling, Institute for Advanced Research"
+    },
+    "finalCta": {
+      "heading": "Ready to expand your intellectual horizons?",
+      "description": "Join 50,000+ researchers using ScholarAI to accelerate discovery and minimize manual synthesis.",
+      "primary": "Start Your First Inquiry",
+      "secondary": "Request Institutional Demo"
+    },
+    "footer": {
+      "description": "The future of autonomous academic research and high-fidelity knowledge synthesis.",
+      "columns": [
+        {
+          "heading": "Platform",
+          "links": ["Agents", "Library", "Integrations", "API Docs"]
+        },
+        {
+          "heading": "Resources",
+          "links": ["Methodology Paper", "Community Forum", "Help Center", "Status"]
+        },
+        {
+          "heading": "Security",
+          "links": ["Privacy Policy", "Terms of Service", "Ethics Guidelines", "Compliance"]
+        }
+      ],
+      "copyright": "© 2024 ScholarAI Research Technologies. All rights reserved."
+    }
+  },
+  "nav": {
+    "brand": "ScholarAI",
+    "features": "Features",
+    "methodology": "Methodology",
+    "pricing": "Pricing",
+    "institutions": "Institutions",
+    "login": "Login",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "heading": "Deep research. Distilled to truth.",
+    "description": "An intelligent computational engine engineered for academic rigor. Define your inquiry below to initiate parallel retrieval and synthesis across global knowledge bases.",
+    "label": "Research Topic",
+    "placeholder": "Describe the phenomenon, clinical trial, or theoretical framework you wish to investigate...",
+    "attach": "Attach document",
+    "settings": "Set parameters",
+    "cta": "Begin Research",
+    "loginCta": "Access Research Portal",
+    "loginHint": "Secure institutional access before starting a research session.",
+    "evidenceA": "Accessing 200M+ peer-reviewed papers",
+    "evidenceB": "Real-time synthesis"
+  },
+  "login": {
+    "eyebrow": "Institutional Login",
+    "heading": "Enter your workspace with a secure research profile.",
+    "description": "A focused sign-in surface inspired by the reference login canvas, adapted for the landing flow so discovery and access stay in one coherent journey.",
+    "welcome": "Welcome to ScholarAI",
+    "subtitle": "Select your entry method below",
+    "loginTab": "Login",
+    "signupTab": "Sign Up",
+    "google": "Google",
+    "github": "GitHub",
+    "orContinue": "Or continue with",
+    "features": [
+      {
+        "title": "Semantic retrieval at scale",
+        "description": "Search across peer-reviewed corpora with grounded ranking tuned for academic evidence."
+      },
+      {
+        "title": "Source-linked synthesis",
+        "description": "Generate structured reports with transparent citations and quick access back to the underlying papers."
+      }
+    ],
+    "emailLabel": "Institutional Email",
+    "emailPlaceholder": "scholar@university.edu",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot password?",
+    "submitLabel": "Login",
+    "helper": "Use your institutional credentials to resume saved workspaces, research trails, and shared dossiers.",
+    "agreementPrefix": "By continuing, you agree to our",
+    "termsLabel": "Terms of Service",
+    "agreementJoiner": "and",
+    "privacyLabel": "Privacy Policy"
+  },
+  "methodology": {
+    "heading": "A rigorous methodology for complex inquiries.",
+    "phases": [
+      {
+        "label": "Phase 01",
+        "title": "Plan & Decompose",
+        "description": "The engine breaks down complex hypotheses into structured, independent sub-queries, creating a logical blueprint for investigation."
+      },
+      {
+        "label": "Phase 02",
+        "title": "Parallel Retrieval",
+        "description": "Simultaneous execution of sub-queries across curated academic databases, ensuring comprehensive and unbiased source acquisition."
+      },
+      {
+        "label": "Phase 03",
+        "title": "Consensus & Report",
+        "description": "Cross-referencing claims to establish consensus, identifying contradictions, and generating fully cited, objective dossiers."
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2024 ScholarAI. Engineered for academic precision.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "apiDocs": "API Docs",
+    "status": "Status"
+  }
+}

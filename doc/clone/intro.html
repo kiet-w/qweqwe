@@ -1,0 +1,422 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ScholarAI - Deep Research. Distilled to Truth.</title>
+    <!-- Google Fonts: Inter and Newsreader -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Symbols Outlined -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Theme Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#eff1f3",
+              "error-container": "#ffdad6",
+              "secondary-fixed-dim": "#b9c7e0",
+              "on-primary-fixed": "#131b2e",
+              "on-tertiary": "#ffffff",
+              primary: "#000000",
+              outline: "#76777d",
+              "on-secondary-container": "#57657b",
+              "primary-container": "#131b2e",
+              "inverse-surface": "#2d3133",
+              "surface-container": "#eceef0",
+              "surface-bright": "#f7f9fb",
+              "on-surface": "#191c1e",
+              "outline-variant": "#c6c6cd",
+              "on-surface-variant": "#45464d",
+              tertiary: "#000000",
+              "on-primary": "#ffffff",
+              error: "#ba1a1a",
+              "primary-fixed-dim": "#bec6e0",
+              "on-primary-container": "#7c839b",
+              secondary: "#515f74",
+              "tertiary-fixed": "#cde5ff",
+              "on-tertiary-fixed": "#001d32",
+              "on-error-container": "#93000a",
+              "surface-tint": "#565e74",
+              "on-secondary-fixed": "#0d1c2f",
+              "on-primary-fixed-variant": "#3f465c",
+              "on-tertiary-fixed-variant": "#004b74",
+              "surface-container-highest": "#e0e3e5",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#dae2fd",
+              "surface-variant": "#e0e3e5",
+              "surface-dim": "#d8dadc",
+              "secondary-fixed": "#d5e3fd",
+              "surface-container-high": "#e6e8ea",
+              "on-tertiary-container": "#3d89c3",
+              "on-secondary": "#ffffff",
+              background: "#f7f9fb",
+              "tertiary-container": "#001d32",
+              surface: "#f7f9fb",
+              "on-error": "#ffffff",
+              "secondary-container": "#d5e3fd",
+              "surface-container-low": "#f2f4f6",
+              "inverse-primary": "#bec6e0",
+              "tertiary-fixed-dim": "#94ccff",
+              "on-background": "#191c1e",
+              "on-secondary-fixed-variant": "#3a485c",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              "section-gap": "80px",
+              gutter: "32px",
+              "reading-well": "720px",
+              "margin-edge": "48px",
+              base: "8px",
+            },
+            fontFamily: {
+              "headline-lg": ["Inter"],
+              "body-standard": ["Newsreader"],
+              "headline-md": ["Inter"],
+              "body-reading": ["Newsreader"],
+              "label-ui": ["Inter"],
+              "citation-note": ["Inter"],
+              "display-xl": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-standard": [
+                "17px",
+                { lineHeight: "1.5", fontWeight: "400" },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-reading": [
+                "20px",
+                { lineHeight: "1.6", fontWeight: "400" },
+              ],
+              "label-ui": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "citation-note": [
+                "12px",
+                { lineHeight: "1.4", fontWeight: "400" },
+              ],
+              "display-xl": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-surface text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary/10"
+  >
+    <!-- JSON Component: TopNavBar -->
+    <nav
+      class="bg-white/90 backdrop-blur-md dark:bg-slate-950/90 fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 flat no-shadow font-inter text-sm tracking-tight text-slate-900 dark:text-slate-50"
+    >
+      <div
+        class="flex justify-between items-center px-8 h-16 max-w-[1440px] mx-auto w-full"
+      >
+        <div
+          class="text-xl font-bold tracking-tighter text-slate-900 dark:text-slate-50"
+        >
+          ScholarAI
+        </div>
+        <div class="hidden md:flex gap-8">
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 active:scale-[0.98] transition-transform px-2 py-1 rounded"
+            href="#"
+            >Features</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 active:scale-[0.98] transition-transform px-2 py-1 rounded"
+            href="#"
+            >Methodology</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 active:scale-[0.98] transition-transform px-2 py-1 rounded"
+            href="#"
+            >Pricing</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 active:scale-[0.98] transition-transform px-2 py-1 rounded"
+            href="#"
+            >Institutions</a
+          >
+        </div>
+        <div class="flex items-center gap-6">
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 active:scale-[0.98] transition-transform"
+            href="#"
+            >Login</a
+          >
+          <a
+            class="bg-slate-900 text-white dark:bg-slate-50 dark:text-slate-900 px-4 py-2 rounded-DEFAULT font-medium text-sm active:scale-[0.98] transition-transform hover:bg-slate-800 dark:hover:bg-slate-200"
+            href="#"
+            >Get Started</a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- Main Content Canvas -->
+    <main
+      class="flex-grow pt-32 pb-section-gap flex flex-col items-center px-margin-edge w-full max-w-[1440px] mx-auto"
+    >
+      <!-- Hero Section -->
+      <section
+        class="w-full max-w-reading-well flex flex-col items-center text-center mt-16 mb-24"
+      >
+        <h1
+          class="font-display-xl text-display-xl text-primary mb-6 max-w-2xl mx-auto"
+        >
+          Deep research. <br />Distilled to truth.
+        </h1>
+        <p
+          class="font-body-reading text-body-reading text-on-surface-variant mb-12 max-w-[600px] mx-auto"
+        >
+          An intelligent computational engine engineered for academic rigor.
+          Define your inquiry below to initiate parallel retrieval and synthesis
+          across global knowledge bases.
+        </p>
+        <!-- Research Input Form -->
+        <div
+          class="w-full relative flex flex-col items-start bg-surface-container-lowest rounded-lg border border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all duration-200 shadow-sm"
+        >
+          <label class="sr-only" for="research-query">Research Topic</label>
+          <textarea
+            class="w-full bg-transparent border-none p-6 font-body-standard text-body-standard text-on-surface placeholder:text-outline resize-none focus:ring-0"
+            id="research-query"
+            placeholder="Describe the phenomenon, clinical trial, or theoretical framework you wish to investigate..."
+            rows="3"
+          ></textarea>
+          <div
+            class="w-full border-t border-outline-variant/50 p-4 flex justify-between items-center bg-surface-container-low/30 rounded-b-lg"
+          >
+            <div class="flex gap-2">
+              <button
+                class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant rounded"
+                title="Attach Document"
+              >
+                <span
+                  class="material-symbols-outlined text-[20px]"
+                  data-icon="attach_file"
+                  >attach_file</span
+                >
+              </button>
+              <button
+                class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant rounded"
+                title="Set Parameters"
+              >
+                <span
+                  class="material-symbols-outlined text-[20px]"
+                  data-icon="tune"
+                  >tune</span
+                >
+              </button>
+            </div>
+            <button
+              class="bg-primary text-on-primary font-label-ui text-label-ui px-6 py-2.5 rounded hover:bg-primary/90 transition-colors flex items-center gap-2"
+            >
+              Begin Research
+              <span
+                class="material-symbols-outlined text-[18px]"
+                data-icon="arrow_forward"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+        </div>
+        <div
+          class="mt-6 flex gap-4 items-center justify-center font-citation-note text-citation-note text-on-surface-variant"
+        >
+          <span>Accessing 200M+ peer-reviewed papers</span>
+          <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+          <span>Real-time synthesis</span>
+        </div>
+      </section>
+      <!-- Structural Divider -->
+      <div class="w-full max-w-5xl h-px bg-outline-variant/30 my-16"></div>
+      <!-- Workflow Explainer (Asymmetric Bento Grid) -->
+      <section class="w-full max-w-5xl flex flex-col items-center">
+        <h2
+          class="font-headline-md text-headline-md text-primary mb-16 text-center"
+        >
+          A rigorous methodology for complex inquiries.
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+          <!-- Step 1: Plan -->
+          <div
+            class="bg-surface-container-lowest border border-outline-variant rounded-lg p-8 flex flex-col h-full transform transition-transform hover:-translate-y-1 duration-300"
+          >
+            <div
+              class="w-12 h-12 bg-surface-container flex items-center justify-center rounded border border-outline-variant/50 mb-6"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-[24px]"
+                data-icon="account_tree"
+                >account_tree</span
+              >
+            </div>
+            <div
+              class="font-label-ui text-label-ui text-on-surface-variant uppercase tracking-widest mb-2 text-[11px]"
+            >
+              Phase 01
+            </div>
+            <h3
+              class="font-headline-md text-headline-md text-primary mb-3 text-[20px]"
+            >
+              Plan &amp; Decompose
+            </h3>
+            <p
+              class="font-body-standard text-body-standard text-on-surface-variant mt-auto"
+            >
+              The engine breaks down complex hypotheses into structured,
+              independent sub-queries, creating a logical blueprint for
+              investigation.
+            </p>
+          </div>
+          <!-- Step 2: Search -->
+          <div
+            class="bg-surface-container-lowest border border-outline-variant rounded-lg p-8 flex flex-col h-full md:mt-8 transform transition-transform hover:-translate-y-1 duration-300"
+          >
+            <div
+              class="w-12 h-12 bg-surface-container flex items-center justify-center rounded border border-outline-variant/50 mb-6"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-[24px]"
+                data-icon="travel_explore"
+                >travel_explore</span
+              >
+            </div>
+            <div
+              class="font-label-ui text-label-ui text-on-surface-variant uppercase tracking-widest mb-2 text-[11px]"
+            >
+              Phase 02
+            </div>
+            <h3
+              class="font-headline-md text-headline-md text-primary mb-3 text-[20px]"
+            >
+              Parallel Retrieval
+            </h3>
+            <p
+              class="font-body-standard text-body-standard text-on-surface-variant mt-auto"
+            >
+              Simultaneous execution of sub-queries across curated academic
+              databases, ensuring comprehensive and unbiased source acquisition.
+            </p>
+          </div>
+          <!-- Step 3: Synthesize -->
+          <div
+            class="bg-surface-container-lowest border border-outline-variant rounded-lg p-8 flex flex-col h-full md:mt-16 transform transition-transform hover:-translate-y-1 duration-300"
+          >
+            <div
+              class="w-12 h-12 bg-surface-container flex items-center justify-center rounded border border-outline-variant/50 mb-6"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-[24px]"
+                data-icon="summarize"
+                >summarize</span
+              >
+            </div>
+            <div
+              class="font-label-ui text-label-ui text-on-surface-variant uppercase tracking-widest mb-2 text-[11px]"
+            >
+              Phase 03
+            </div>
+            <h3
+              class="font-headline-md text-headline-md text-primary mb-3 text-[20px]"
+            >
+              Consensus &amp; Report
+            </h3>
+            <p
+              class="font-body-standard text-body-standard text-on-surface-variant mt-auto"
+            >
+              Cross-referencing claims to establish consensus, identifying
+              contradictions, and generating fully cited, objective dossiers.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- JSON Component: Footer -->
+    <footer
+      class="bg-white dark:bg-slate-950 w-full border-t border-slate-100 dark:border-slate-900 py-12 flat font-inter text-xs tracking-wide text-slate-900 dark:text-slate-50 mt-auto"
+    >
+      <div
+        class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="font-bold text-slate-900 dark:text-slate-50">
+          © 2024 ScholarAI. Engineered for academic precision.
+        </div>
+        <div class="flex gap-6">
+          <a
+            class="text-slate-400 dark:text-slate-600 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity duration-300"
+            href="#"
+            >Privacy</a
+          >
+          <a
+            class="text-slate-400 dark:text-slate-600 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity duration-300"
+            href="#"
+            >Terms</a
+          >
+          <a
+            class="text-slate-400 dark:text-slate-600 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity duration-300"
+            href="#"
+            >API Docs</a
+          >
+          <a
+            class="text-slate-400 dark:text-slate-600 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity duration-300"
+            href="#"
+            >Status</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

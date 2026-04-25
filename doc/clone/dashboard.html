@@ -1,0 +1,477 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ScholarAI - Research Dashboard</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 20;
+      }
+    </style>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0f172a",
+              "on-primary": "#ffffff",
+              "primary-container": "#e2e8f0",
+              "on-primary-container": "#0f172a",
+              secondary: "#475569",
+              "on-secondary": "#ffffff",
+              "secondary-container": "#f1f5f9",
+              "on-secondary-container": "#1e293b",
+              tertiary: "#334155",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#cbd5e1",
+              "on-tertiary-container": "#0f172a",
+              error: "#b91c1c",
+              "on-error": "#ffffff",
+              "error-container": "#fef2f2",
+              "on-error-container": "#7f1d1d",
+              background: "#f8fafc",
+              "on-background": "#0f172a",
+              surface: "#f8fafc",
+              "on-surface": "#0f172a",
+              "surface-variant": "#e2e8f0",
+              "on-surface-variant": "#475569",
+              outline: "#94a3b8",
+              "outline-variant": "#cbd5e1",
+              shadow: "#000000",
+              scrim: "#000000",
+              "inverse-surface": "#0f172a",
+              "inverse-on-surface": "#f1f5f9",
+              "inverse-primary": "#f8fafc",
+              "surface-dim": "#e2e8f0",
+              "surface-bright": "#f8fafc",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f1f5f9",
+              "surface-container": "#e2e8f0",
+              "surface-container-high": "#cbd5e1",
+              "surface-container-highest": "#94a3b8",
+            },
+            borderRadius: {
+              none: "0",
+              sm: "0.125rem",
+              DEFAULT: "0.25rem",
+              md: "0.375rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+            spacing: {
+              "section-gap": "80px",
+              gutter: "32px",
+              "reading-well": "720px",
+              "margin-edge": "48px",
+              base: "8px",
+            },
+            fontFamily: {
+              "headline-lg": ["Inter", "sans-serif"],
+              "body-standard": ["Playfair Display", "serif"],
+              "headline-md": ["Inter", "sans-serif"],
+              "body-reading": ["Playfair Display", "serif"],
+              "label-ui": ["Inter", "sans-serif"],
+              "citation-note": ["Inter", "sans-serif"],
+              "display-xl": ["Inter", "sans-serif"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-standard": [
+                "17px",
+                { lineHeight: "1.5", fontWeight: "400" },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "body-reading": [
+                "20px",
+                { lineHeight: "1.6", fontWeight: "400" },
+              ],
+              "label-ui": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "citation-note": [
+                "12px",
+                { lineHeight: "1.4", fontWeight: "400" },
+              ],
+              "display-xl": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background flex h-screen overflow-hidden antialiased"
+  >
+    <!-- SideNavBar (Generated from JSON) -->
+    <aside
+      class="bg-surface-container-lowest text-on-surface font-inter text-[13px] leading-relaxed h-screen w-64 border-r border-outline-variant fixed left-0 top-0 flex flex-col p-6 gap-8 z-40 flat no-shadow"
+    >
+      <!-- Header -->
+      <div class="flex flex-col gap-2">
+        <h1
+          class="text-lg font-black uppercase tracking-widest text-on-surface"
+        >
+          ScholarAI
+        </h1>
+        <span
+          class="font-citation-note text-citation-note text-on-surface-variant uppercase tracking-wider"
+          >Deep Research Mode</span
+        >
+      </div>
+      <!-- CTA -->
+      <button
+        class="bg-primary text-on-primary font-label-ui text-label-ui py-2.5 px-4 rounded w-full flex items-center justify-center gap-2 hover:bg-inverse-surface transition-colors"
+      >
+        <span class="material-symbols-outlined text-[18px]">add</span>
+        New Inquiry
+      </button>
+      <!-- Main Navigation -->
+      <nav class="flex-1 flex flex-col gap-1">
+        <!-- Active Tab: Dashboard -->
+        <a
+          class="bg-surface-container-low text-on-surface font-semibold border border-outline-variant rounded flex items-center gap-3 px-3 py-2.5 focus:ring-2 focus:ring-primary active:scale-[0.98] transition-transform"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined text-[20px]"
+            data-weight="fill"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >dashboard</span
+          >
+          Dashboard
+        </a>
+        <!-- Inactive Tabs -->
+        <a
+          class="text-on-surface-variant hover:bg-surface-container-low rounded flex items-center gap-3 px-3 py-2.5 hover:text-on-surface transition-all focus:ring-2 focus:ring-primary active:scale-[0.98]"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-[20px]"
+            >account_tree</span
+          >
+          Agent Tracing
+        </a>
+        <a
+          class="text-on-surface-variant hover:bg-surface-container-low rounded flex items-center gap-3 px-3 py-2.5 hover:text-on-surface transition-all focus:ring-2 focus:ring-primary active:scale-[0.98]"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-[20px]">description</span>
+          Research Reports
+        </a>
+        <a
+          class="text-on-surface-variant hover:bg-surface-container-low rounded flex items-center gap-3 px-3 py-2.5 hover:text-on-surface transition-all focus:ring-2 focus:ring-primary active:scale-[0.98]"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-[20px]"
+            >auto_stories</span
+          >
+          Library
+        </a>
+      </nav>
+      <!-- Footer Navigation -->
+      <div class="flex flex-col gap-1 border-t border-outline-variant pt-6">
+        <a
+          class="text-on-surface-variant hover:bg-surface-container-low rounded flex items-center gap-3 px-3 py-2.5 hover:text-on-surface transition-all focus:ring-2 focus:ring-primary active:scale-[0.98]"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-[20px]">settings</span>
+          Settings
+        </a>
+        <a
+          class="text-on-surface-variant hover:bg-surface-container-low rounded flex items-center gap-3 px-3 py-2.5 hover:text-on-surface transition-all focus:ring-2 focus:ring-primary active:scale-[0.98]"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-[20px]">menu_book</span>
+          Documentation
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 flex-1 flex flex-col h-full overflow-y-auto bg-surface">
+      <!-- Reading Well Container -->
+      <div
+        class="max-w-reading-well mx-auto w-full px-margin-edge py-16 flex flex-col gap-section-gap"
+      >
+        <!-- Inquiry Section -->
+        <section class="flex flex-col gap-6">
+          <header>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">
+              Initiate Research
+            </h2>
+            <p
+              class="font-body-standard text-body-standard text-on-surface-variant"
+            >
+              Define your hypothesis or core question. The system will
+              synthesize available academic literature.
+            </p>
+          </header>
+          <div
+            class="bg-surface-container-lowest border border-outline-variant rounded p-6 flex flex-col gap-4 shadow-sm"
+          >
+            <label
+              class="font-label-ui text-label-ui text-on-surface uppercase tracking-wider text-[11px]"
+              for="research-query"
+              >Primary Inquiry</label
+            >
+            <div class="relative group">
+              <textarea
+                class="w-full bg-transparent border-b border-outline border-x-0 border-t-0 px-0 py-2 font-body-reading text-body-reading text-on-surface placeholder:text-outline-variant focus:ring-0 focus:border-primary transition-colors resize-none"
+                id="research-query"
+                placeholder="e.g., What are the emergent methodologies for synthesizing meta-materials at room temperature?"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+              <div class="flex gap-4">
+                <button
+                  class="font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface flex items-center gap-1.5 transition-colors"
+                >
+                  <span class="material-symbols-outlined text-[18px]"
+                    >attach_file</span
+                  >
+                  Attach Datasets
+                </button>
+                <button
+                  class="font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface flex items-center gap-1.5 transition-colors"
+                >
+                  <span class="material-symbols-outlined text-[18px]"
+                    >tune</span
+                  >
+                  Parameters
+                </button>
+              </div>
+              <button
+                class="bg-primary text-on-primary font-label-ui text-label-ui px-6 py-2.5 rounded hover:bg-inverse-surface transition-colors flex items-center gap-2"
+              >
+                Deploy Agent
+                <span class="material-symbols-outlined text-[18px]">send</span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- Recent Research Grid (Bento Style) -->
+        <section class="flex flex-col gap-6">
+          <div
+            class="flex justify-between items-end border-b border-outline-variant pb-4"
+          >
+            <h3 class="font-headline-md text-headline-md text-on-surface">
+              Active Dossiers
+            </h3>
+            <button
+              class="font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface flex items-center gap-1"
+            >
+              View Archive
+              <span class="material-symbols-outlined text-[16px]"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <!-- Card 1: Analyzing -->
+            <article
+              class="bg-surface-container-lowest border border-outline-variant rounded p-6 flex flex-col gap-4 relative overflow-hidden group"
+            >
+              <div class="flex justify-between items-start">
+                <div class="flex flex-col gap-1">
+                  <span
+                    class="font-label-ui text-[11px] uppercase tracking-wider text-on-surface-variant"
+                    >Dossier ID: 8492-A</span
+                  >
+                  <h4
+                    class="font-body-reading text-body-reading font-semibold text-on-surface leading-tight mt-1"
+                  >
+                    Neuromorphic Computing Architectures
+                  </h4>
+                </div>
+                <span
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-ui text-[11px] font-medium border border-outline-variant"
+                >
+                  <span
+                    class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"
+                  ></span>
+                  Analyzing
+                </span>
+              </div>
+              <p
+                class="font-body-standard text-body-standard text-on-surface-variant line-clamp-3"
+              >
+                Synthesizing recent papers on memristor crossbar arrays and
+                their application in unsupervised learning models. Currently
+                parsing 42 peer-reviewed sources.
+              </p>
+              <div
+                class="mt-auto pt-4 flex gap-2 border-t border-surface-container"
+              >
+                <span
+                  class="bg-surface-container px-2 py-1 rounded text-citation-note font-citation-note text-on-surface-variant"
+                  >42 Sources</span
+                >
+                <span
+                  class="bg-surface-container px-2 py-1 rounded text-citation-note font-citation-note text-on-surface-variant"
+                  >Agent 03</span
+                >
+              </div>
+            </article>
+            <!-- Card 2: Complete -->
+            <article
+              class="bg-surface-container-lowest border border-outline-variant rounded p-6 flex flex-col gap-4 relative overflow-hidden"
+            >
+              <div class="flex justify-between items-start">
+                <div class="flex flex-col gap-1">
+                  <span
+                    class="font-label-ui text-[11px] uppercase tracking-wider text-on-surface-variant"
+                    >Dossier ID: 8488-C</span
+                  >
+                  <h4
+                    class="font-body-reading text-body-reading font-semibold text-on-surface leading-tight mt-1"
+                  >
+                    Efficacy of MRNA Vaccines in Autoimmune Variants
+                  </h4>
+                </div>
+                <span
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container font-label-ui text-[11px] font-medium border border-outline-variant"
+                >
+                  <span class="material-symbols-outlined text-[12px]"
+                    >check_circle</span
+                  >
+                  Complete
+                </span>
+              </div>
+              <p
+                class="font-body-standard text-body-standard text-on-surface-variant line-clamp-3"
+              >
+                Final report generated. Strong correlation found between variant
+                X and reduced inflammatory response metrics across three
+                longitudinal studies.
+              </p>
+              <div
+                class="mt-auto pt-4 flex justify-between items-center border-t border-surface-container"
+              >
+                <div class="flex gap-2">
+                  <span
+                    class="bg-surface-container px-2 py-1 rounded text-citation-note font-citation-note text-on-surface-variant"
+                    >128 Sources</span
+                  >
+                </div>
+                <button
+                  class="font-label-ui text-label-ui text-primary hover:text-on-surface-variant transition-colors flex items-center gap-1"
+                >
+                  Read Report
+                </button>
+              </div>
+            </article>
+            <!-- Card 3: Drafting -->
+            <article
+              class="bg-surface-container-lowest border border-outline-variant rounded p-6 flex flex-col gap-4 relative overflow-hidden md:col-span-2"
+            >
+              <div class="flex justify-between items-start">
+                <div class="flex flex-col gap-1">
+                  <span
+                    class="font-label-ui text-[11px] uppercase tracking-wider text-on-surface-variant"
+                    >Dossier ID: 8490-B</span
+                  >
+                  <h4
+                    class="font-body-reading text-body-reading font-semibold text-on-surface leading-tight mt-1"
+                  >
+                    Socio-Economic Impacts of Algorithmic Trading (2015-2023)
+                  </h4>
+                </div>
+                <span
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-ui text-[11px] font-medium border border-outline-variant"
+                >
+                  <span class="material-symbols-outlined text-[12px]"
+                    >edit_document</span
+                  >
+                  Drafting Report
+                </span>
+              </div>
+              <div class="flex flex-col gap-3 mt-2">
+                <p
+                  class="font-body-standard text-body-standard text-on-surface-variant"
+                >
+                  Data extraction complete. Formulating chronological synthesis
+                  of market volatility indices correlated with high-frequency
+                  trading adoption.
+                </p>
+                <!-- Minimalist Data Table representation inside card -->
+                <div class="bg-surface py-2 rounded">
+                  <div
+                    class="grid grid-cols-3 gap-4 px-4 py-1 border-b border-outline-variant/30 font-label-ui text-[11px] uppercase text-on-surface-variant"
+                  >
+                    <span>Metric</span>
+                    <span class="text-right">Sources</span>
+                    <span class="text-right">Confidence</span>
+                  </div>
+                  <div
+                    class="grid grid-cols-3 gap-4 px-4 py-2 font-citation-note text-citation-note text-on-surface"
+                  >
+                    <span>Volatility Index</span>
+                    <span class="text-right font-mono">24</span>
+                    <span class="text-right font-mono">High</span>
+                  </div>
+                  <div
+                    class="grid grid-cols-3 gap-4 px-4 py-2 font-citation-note text-citation-note text-on-surface border-t border-outline-variant/10"
+                  >
+                    <span>Liquidity Depth</span>
+                    <span class="text-right font-mono">18</span>
+                    <span class="text-right font-mono">Medium</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-auto pt-4 flex gap-2 border-t border-surface-container"
+              >
+                <span
+                  class="bg-surface-container px-2 py-1 rounded text-citation-note font-citation-note text-on-surface-variant"
+                  >Est. 5 mins remaining</span
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
