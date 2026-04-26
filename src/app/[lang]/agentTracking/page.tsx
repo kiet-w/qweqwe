@@ -1,38 +1,13 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
-import { getDictionary, isLocale } from "@/shared/i18n";
-import { AgentTrackingPage } from "@/widgets/landing";
-
-type PageProps = {
+type LegacyAgentTrackingPageProps = {
   params: Promise<{ lang: string }>;
 };
 
-export async function generateMetadata({
+export default async function LegacyAgentTrackingPage({
   params,
-}: PageProps): Promise<Metadata> {
+}: LegacyAgentTrackingPageProps) {
   const { lang } = await params;
 
-  if (!isLocale(lang)) {
-    return {};
-  }
-
-  const dict = await getDictionary(lang);
-
-  return {
-    title: dict.agentTracking.metadata.title,
-    description: dict.agentTracking.metadata.description,
-  };
-}
-
-export default async function Page({ params }: PageProps) {
-  const { lang } = await params;
-
-  if (!isLocale(lang)) {
-    notFound();
-  }
-
-  const dict = await getDictionary(lang);
-
-  return <AgentTrackingPage locale={lang} dictionary={dict} />;
+  redirect(`/${lang}/agent-tracking`);
 }

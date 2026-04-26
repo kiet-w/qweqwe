@@ -34,5 +34,16 @@ export default async function Page({ params }: PageProps) {
 
   const dict = await getDictionary(lang);
 
-  return <LandingPage locale={lang} dictionary={dict} />;
+  return (
+    <LandingPage
+      locale={lang}
+      dictionary={{
+        footer: dict.footer,
+        hero: dict.hero,
+        login: dict.login,
+        methodology: dict.methodology,
+        nav: dict.nav,
+      }}
+    />
+  );
 }

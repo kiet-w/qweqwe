@@ -140,6 +140,68 @@ export type LandingDictionary = {
       copyright: string;
     };
   };
+  reportPage: {
+    metadata: {
+      title: string;
+      description: string;
+    };
+    heading: string;
+    description: string;
+  };
+  libraryPage: {
+    metadata: {
+      title: string;
+      description: string;
+    };
+    toolbar: {
+      searchLabel: string;
+      searchPlaceholder: string;
+      activityLabel: string;
+      historyLabel: string;
+      profileLabel: string;
+    };
+    heading: string;
+    description: string;
+    filterLabel: string;
+    filters: string[];
+    newCollection: string;
+    recentReports: {
+      heading: string;
+      viewAll: string;
+    };
+    reportActions: {
+      share: string;
+      export: string;
+    };
+    reports: Array<{
+      statusLabel: string;
+      statusTone: "complete" | "draft";
+      moreLabel: string;
+      title: string;
+      description: string;
+      meta: string;
+      actionLabel: string;
+    }>;
+    collections: {
+      heading: string;
+      items: Array<{
+        title: string;
+        countLabel: string;
+      }>;
+    };
+    readingList: {
+      heading: string;
+      items: Array<{
+        title: string;
+        meta: string;
+      }>;
+      viewAll: string;
+    };
+    savedQueue: {
+      heading: string;
+      description: string;
+    };
+  };
   loginPage: {
     metadata: {
       title: string;
@@ -284,6 +346,17 @@ export type LandingDictionary = {
     status: string;
   };
 };
+
+export type ResearchSidebarDictionary = Pick<LandingDictionary, "agentTracking" | "nav">;
+export type AgentTrackingDictionary = LandingDictionary["agentTracking"];
+export type DashboardDictionary = LandingDictionary["dashboard"];
+export type ReportPageDictionary = LandingDictionary["reportPage"];
+export type LibraryPageDictionary = LandingDictionary["libraryPage"];
+export type LandingPageDictionary = Pick<
+  LandingDictionary,
+  "nav" | "hero" | "login" | "methodology" | "footer"
+>;
+export type LoginPageDictionary = Pick<LandingDictionary, "nav" | "loginPage">;
 
 function asLandingDictionary(value: unknown): LandingDictionary {
   return value as LandingDictionary;

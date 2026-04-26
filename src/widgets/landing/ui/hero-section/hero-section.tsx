@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { QueryComposer } from "@/features/research-query";
 import { Button } from "@/shared/ui/atoms/button";
 import { BodyLarge } from "@/shared/ui/atoms/typography";
-import { QueryComposer } from "@/shared/ui/molecules/query-composer";
 import { SentenceHeading } from "@/shared/ui/molecules/sentence-heading";
 
 type HeroSectionProps = {

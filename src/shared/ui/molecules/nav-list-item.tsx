@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { cn } from "@/shared/lib";
 
 type NavListItemProps = {
@@ -16,7 +18,7 @@ export function NavListItem({
   className,
 }: NavListItemProps) {
   return (
-    <a
+    <Link
       href={href}
       className={cn(
         "flex items-center gap-3 rounded-sm p-2 text-sm transition-all",
@@ -28,6 +30,6 @@ export function NavListItem({
     >
       {icon}
       {label}
-    </a>
+    </Link>
   );
 }

@@ -5,8 +5,11 @@ import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { CircleDashed } from "lucide-react";
 
+import { ROUTES } from "@/shared/config/routes";
+import type { Locale } from "@/shared/i18n";
+
 type LoginPageFormProps = {
-  locale: string;
+  locale: Locale;
   heading: string;
   description: string;
   google: string;
@@ -42,12 +45,13 @@ export function LoginPageForm({
 }: LoginPageFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const loginHref = ROUTES.login(locale);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     startTransition(() => {
-      router.push(`/${locale}/dashboard`);
+      router.push(ROUTES.dashboard(locale));
     });
   }
 
@@ -95,7 +99,7 @@ export function LoginPageForm({
             />
             <span className="text-xs text-on-surface-variant">{rememberSession}</span>
           </label>
-          <Link href={`/${locale}/login`} className="text-xs text-primary hover:underline">
+          <Link href={loginHref} className="text-xs text-primary hover:underline">
             {forgotPassword}
           </Link>
         </div>
@@ -144,7 +148,7 @@ export function LoginPageForm({
 
       <p className="mt-8 text-center text-xs text-on-surface-variant">
         {signupPrompt}{" "}
-        <Link href={`/${locale}/login`} className="font-semibold text-primary hover:underline">
+        <Link href={loginHref} className="font-semibold text-primary hover:underline">
           {signupCta}
         </Link>
       </p>
