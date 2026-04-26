@@ -3,6 +3,7 @@
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 
+import { ROUTES } from "@/shared/config/routes";
 import { Button, Icon, Input } from "@/shared/ui";
 import type { Locale } from "@/shared/i18n";
 
@@ -54,7 +55,7 @@ export function LoginForm({
     event.preventDefault();
 
     startTransition(() => {
-      router.push(`/${locale}/dashboard`);
+      router.push(ROUTES.dashboard(locale));
     });
   }
 

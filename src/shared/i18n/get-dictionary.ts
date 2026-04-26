@@ -347,6 +347,17 @@ export type LandingDictionary = {
   };
 };
 
+export type ResearchSidebarDictionary = Pick<LandingDictionary, "agentTracking" | "nav">;
+export type AgentTrackingDictionary = LandingDictionary["agentTracking"];
+export type DashboardDictionary = LandingDictionary["dashboard"];
+export type ReportPageDictionary = LandingDictionary["reportPage"];
+export type LibraryPageDictionary = LandingDictionary["libraryPage"];
+export type LandingPageDictionary = Pick<
+  LandingDictionary,
+  "nav" | "hero" | "login" | "methodology" | "footer"
+>;
+export type LoginPageDictionary = Pick<LandingDictionary, "nav" | "loginPage">;
+
 function asLandingDictionary(value: unknown): LandingDictionary {
   return value as LandingDictionary;
 }

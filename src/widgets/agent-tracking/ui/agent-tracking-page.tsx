@@ -1,16 +1,14 @@
-import type { LandingDictionary } from "@/shared/i18n";
+import type { AgentTrackingDictionary } from "@/shared/i18n";
 
 import { DraftPreviewPanel } from "./draft-preview-panel";
 import { ExecutionPlanPanel } from "./execution-plan-panel";
 import { ProcessFeedPanel } from "./process-feed-panel";
 
 type AgentTrackingPageProps = {
-  dictionary: LandingDictionary;
+  agentTracking: AgentTrackingDictionary;
 };
 
-export function AgentTrackingPage({ dictionary }: AgentTrackingPageProps) {
-  const { agentTracking } = dictionary;
-
+export function AgentTrackingPage({ agentTracking }: AgentTrackingPageProps) {
   return (
     <section className="flex min-h-screen overflow-hidden bg-surface text-on-surface">
       <ExecutionPlanPanel

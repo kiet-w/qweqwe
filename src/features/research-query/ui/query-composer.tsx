@@ -15,7 +15,6 @@ export function QueryComposer({
   settingsLabel,
   submitLabel,
 }: QueryComposerProps) {
-  // Logic xử lý tìm kiếm (ví dụ: useActionState, useOptimistic) sẽ nằm ở đây
   return (
     <div className="w-full overflow-hidden rounded-lg border border-outline-variant bg-surface-container-lowest shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
       <label htmlFor="research-query" className="sr-only">
@@ -32,12 +31,7 @@ export function QueryComposer({
           <Button type="button" variant="ghost" size="icon" aria-label={attachLabel}>
             <Icon name="paperclip" />
           </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            aria-label={settingsLabel}
-          >
+          <Button type="button" variant="ghost" size="icon" aria-label={settingsLabel}>
             <Icon name="sliders" />
           </Button>
         </div>

@@ -1,4 +1,5 @@
-import type { LandingDictionary, Locale } from "@/shared/i18n";
+import type { LandingPageDictionary, Locale } from "@/shared/i18n";
+import { ROUTES } from "@/shared/config/routes";
 
 import { HeroSection } from "./hero-section";
 import { LoginSection } from "./login-section";
@@ -8,11 +9,11 @@ import { SiteHeader } from "./site-header";
 
 type LandingPageProps = {
   locale: Locale;
-  dictionary: LandingDictionary;
+  dictionary: LandingPageDictionary;
 };
 
 export function LandingPage({ locale, dictionary }: LandingPageProps) {
-  const loginHref = `/${locale}/login`;
+  const loginHref = ROUTES.login(locale);
 
   return (
     <div lang={locale} className="min-h-screen bg-surface text-on-surface">

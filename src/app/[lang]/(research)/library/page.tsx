@@ -34,5 +34,5 @@ export default async function Page({ params }: PageProps) {
 
   const dict = await getDictionary(lang);
 
-  return <LibraryPage dictionary={dict} />;
+  return <LibraryPage libraryPage={dict.libraryPage} />;
 }

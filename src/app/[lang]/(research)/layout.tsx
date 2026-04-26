@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale } from "@/shared/i18n";
 import { ResearchShell } from "@/widgets/research-shell";
+import { ResearchSidebar } from "@/widgets/research-sidebar";
 
 export default async function ResearchLayout({
   children,
@@ -19,8 +20,15 @@ export default async function ResearchLayout({
   const dictionary = await getDictionary(lang);
 
   return (
-    <ResearchShell locale={lang} dictionary={dictionary}>
-      {children}
-    </ResearchShell>
+    <div className="min-h-screen bg-surface text-on-surface">
+      <ResearchSidebar
+        locale={lang}
+        dictionary={{
+          agentTracking: dictionary.agentTracking,
+          nav: dictionary.nav,
+        }}
+      />
+      <ResearchShell>{children}</ResearchShell>
+    </div>
   );
 }

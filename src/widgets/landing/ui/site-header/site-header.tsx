@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ROUTES } from "@/shared/config/routes";
 import type { Locale } from "@/shared/i18n";
 
 type SiteHeaderProps = {
@@ -11,13 +12,13 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ locale, brand, items }: SiteHeaderProps) {
-  const loginHref = `/${locale}/login`;
+  const loginHref = ROUTES.login(locale);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-outline-variant/80 bg-white/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 md:px-8">
         <Link
-          href={`/${locale}`}
+          href={ROUTES.home(locale)}
           className="text-xl font-semibold tracking-[-0.04em]"
         >
           {brand}

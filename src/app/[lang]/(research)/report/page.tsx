@@ -34,5 +34,5 @@ export default async function Page({ params }: PageProps) {
 
   const dict = await getDictionary(lang);
 
-  return <ReportPage dictionary={dict} />;
+  return <ReportPage reportPage={dict.reportPage} />;
 }

@@ -12,66 +12,59 @@ import {
   Settings,
 } from "lucide-react";
 
-import type { Locale } from "@/shared/i18n";
+import type { Locale, ResearchSidebarDictionary } from "@/shared/i18n";
+import { ROUTES } from "@/shared/config/routes";
 import { Button } from "@/shared/ui/atoms/button";
 import { NavListItem } from "@/shared/ui/molecules/nav-list-item";
 
 type ResearchSidebarProps = {
   locale: Locale;
-  brand: string;
-  brandSubtext: string;
-  newInquiry: string;
-  navigation: {
-    dashboard: string;
-    agentTracing: string;
-    researchReports: string;
-    library: string;
-    settings: string;
-    documentation: string;
-  };
+  dictionary: ResearchSidebarDictionary;
 };
+
+function isActivePath(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function ResearchSidebar({
   locale,
-  brand,
-  brandSubtext,
-  newInquiry,
-  navigation,
+  dictionary,
 }: ResearchSidebarProps) {
   const pathname = usePathname();
+  const { agentTracking, nav } = dictionary;
 
   const navItems = [
     {
-      href: `/${locale}/dashboard`,
-      label: navigation.dashboard,
+      href: ROUTES.dashboard(locale),
+      label: agentTracking.navigation.dashboard,
       icon: <LayoutDashboard className="size-5" strokeWidth={1.9} />,
     },
     {
-      href: `/${locale}/agentTracking`,
-      label: navigation.agentTracing,
+      href: ROUTES.agentTracking(locale),
+      label: agentTracking.navigation.agentTracing,
       icon: <GitBranch className="size-5" strokeWidth={1.9} />,
     },
     {
-      href: `/${locale}/report`,
-      label: navigation.researchReports,
+      href: ROUTES.report(locale),
+      label: agentTracking.navigation.researchReports,
       icon: <FileText className="size-5" strokeWidth={1.9} />,
     },
     {
-      href: `/${locale}/library`,
-      label: navigation.library,
+      href: ROUTES.library(locale),
+      label: agentTracking.navigation.library,
       icon: <LibraryBig className="size-5" strokeWidth={1.9} />,
     },
   ];
 
   const footerItems = [
     {
-      href: `/${locale}/settings`,
-      label: navigation.settings,
+      href: ROUTES.settings(locale),
+      label: agentTracking.navigation.settings,
       icon: <Settings className="size-5" strokeWidth={1.9} />,
     },
     {
-      href: `/${locale}/documentation`,
-      label: navigation.documentation,
+      href: ROUTES.documentation(locale),
+      label: agentTracking.navigation.documentation,
       icon: <BookOpen className="size-5" strokeWidth={1.9} />,
     },
   ];
@@ -82,10 +75,12 @@ export function ResearchSidebar({
         <div className="mb-1 flex items-center gap-3">
           <BrainCircuit className="size-5 text-primary" strokeWidth={2.2} />
           <span className="text-lg font-black uppercase tracking-[0.22em] text-slate-900">
-            {brand}
+            {nav.brand}
           </span>
         </div>
-        <p className="text-sm text-on-surface-variant">{brandSubtext}</p>
+        <p className="text-sm text-on-surface-variant">
+          {agentTracking.brandSubtext}
+        </p>
       </div>
 
       <Button
@@ -93,7 +88,7 @@ export function ResearchSidebar({
         className="mt-6 w-full justify-center rounded-sm text-sm font-medium lg:mt-0"
       >
         <Plus className="size-[18px]" strokeWidth={2.2} />
-        {newInquiry}
+        {agentTracking.newInquiry}
       </Button>
 
       <div className="mt-6 grid gap-1 sm:grid-cols-2 lg:mt-0 lg:flex-1 lg:grid-cols-1 lg:content-start lg:overflow-y-auto">
@@ -103,7 +98,7 @@ export function ResearchSidebar({
             href={item.href}
             label={item.label}
             icon={item.icon}
-            active={pathname === item.href}
+            active={isActivePath(pathname, item.href)}
           />
         ))}
       </div>
@@ -115,7 +110,7 @@ export function ResearchSidebar({
             href={item.href}
             label={item.label}
             icon={item.icon}
-            active={pathname === item.href}
+            active={isActivePath(pathname, item.href)}
           />
         ))}
       </div>

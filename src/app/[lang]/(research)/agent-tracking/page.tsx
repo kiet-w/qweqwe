@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale } from "@/shared/i18n";
-import { AgentTrackingPage } from "@/widgets/landing";
+import { AgentTrackingPage } from "@/widgets/agent-tracking";
 
 type PageProps = {
   params: Promise<{ lang: string }>;
@@ -34,5 +34,5 @@ export default async function Page({ params }: PageProps) {
 
   const dict = await getDictionary(lang);
 
-  return <AgentTrackingPage dictionary={dict} />;
+  return <AgentTrackingPage agentTracking={dict.agentTracking} />;
 }
