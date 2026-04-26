@@ -6,6 +6,8 @@ export * from "./atoms/typography";
 export * from "./molecules/feature-blurb";
 export * from "./molecules/nav-list-item";
 export * from "./molecules/query-composer";
+export * from "./molecules/search-field";
+export * from "./molecules/section-heading";
 export * from "./molecules/activity-feed-entry";
 export * from "./molecules/draft-placeholder";
 export * from "./molecules/sentence-heading";

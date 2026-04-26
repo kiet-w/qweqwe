@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale } from "@/shared/i18n";
-import { DashboardPage } from "@/widgets/dashboard";
+import { LibraryPage } from "@/widgets/library";
 
 type PageProps = {
   params: Promise<{ lang: string }>;
@@ -20,8 +20,8 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
 
   return {
-    title: dict.dashboard.metadata.title,
-    description: dict.dashboard.metadata.description,
+    title: dict.libraryPage.metadata.title,
+    description: dict.libraryPage.metadata.description,
   };
 }
 
@@ -34,5 +34,5 @@ export default async function Page({ params }: PageProps) {
 
   const dict = await getDictionary(lang);
 
-  return <DashboardPage locale={lang} dictionary={dict} />;
+  return <LibraryPage dictionary={dict} />;
 }

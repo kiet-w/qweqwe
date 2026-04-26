@@ -1,69 +1,155 @@
-# Tài liệu Luồng Xử Lý Frontend (Frontend Architecture & Flow)
+# Tai lieu Luong Xu Ly Frontend (Frontend Architecture & Flow)
 
-Tài liệu này giải thích chi tiết cách ứng dụng vận hành, cấu trúc thư mục và các quy tắc lập trình đang được áp dụng trong dự án (Next.js 15, FSD, Atomic Design).
+Tai lieu nay mo ta luong routing, layout, widget composition, va nguyen tac cap nhat frontend theo trang thai code hien tai cua du an.
 
-## 1. Kiến trúc Tổng thể (Architecture)
+## 1. Tong quan kien truc
 
-Dự án sử dụng **Feature-Sliced Design (FSD)** làm khung xương chính, chia code thành các lớp (layers) có trách nhiệm riêng biệt:
+Du an dang dung:
 
--   **`app/`**: Nơi cấu hình Routing, Layout, và Global Styles. Đây là điểm bắt đầu của ứng dụng.
--   **`widgets/`**: Các khối giao diện lớn, phức tạp được lắp ghép từ nhiều *Features* và *Entities*. Áp dụng mô hình **Component-as-a-Folder** (Ví dụ: `widgets/landing/ui/hero-section/`).
--   **`features/`**: Chứa logic tương tác của người dùng mang lại giá trị kinh doanh (Ví dụ: `auth` xử lý đăng nhập, `research-query` xử lý tìm kiếm khoa học).
--   **`entities/`**: Chứa logic liên quan đến thực thể dữ liệu (Ví dụ: `user`). Bao gồm API calls, state management cho thực thể đó.
--   **`shared/`**: Các tài nguyên dùng chung, không phụ thuộc vào business logic (Ví dụ: `UI Atoms`, `utils`, `i18n`).
+- `Next.js App Router`
+- `Feature-Sliced Design (FSD)`
+- `Atomic Design` cho `shared/ui`
+- `i18n` theo segment `src/app/[lang]`
 
-## 2. Luồng Thực thi (Execution Flow)
+Cau truc chinh:
 
-### A. Luồng Routing & Internationalization (i18n)
-1.  **Request**: Người dùng truy cập `/[lang]/page`.
-2.  **Middleware**: Kiểm tra ngôn ngữ (`en`, `vi`). Nếu thiếu, tự động redirect về ngôn ngữ mặc định.
-3.  **Layout (`src/app/[lang]/layout.tsx`)**: 
-    -   Nhận `lang` từ params.
-    -   Khởi tạo `Dictionary` (ngôn ngữ) thông qua `shared/i18n`.
-    -   Cung cấp context cho toàn bộ ứng dụng.
-4.  **Page (`src/app/[lang]/page.tsx`)**: Gọi các `Widgets` để hiển thị nội dung.
+- `src/app/`: root layout, route tree, global styles
+- `src/shared/`: i18n, utils, UI atoms/molecules
+- `src/widgets/`: page-level va shell-level composition
 
-### B. Luồng Render Component (Atomic Design trong FSD)
-Chúng ta áp dụng **Atomic Design** bên trong lớp `shared/ui` và các lớp khác để quản lý độ phức tạp:
+## 2. Luong routing va i18n
 
-1.  **Atoms (`shared/ui/atoms`)**: Các thành phần nhỏ nhất (Button, Input, Typography). Không chứa logic nghiệp vụ.
-2.  **Molecules (`shared/ui/molecules`)**: Kết hợp các Atoms (Ví dụ: `SearchField` = `Input` + `Icon`).
-3.  **Organisms (Nằm trong `entities` hoặc `features`)**: Các khối lớn có gắn logic (Ví dụ: `LoginForm` trong `features/auth`).
-4.  **Templates/Widgets (Folder-based)**: Các khối lớn lắp ghép page. Mỗi widget được chia thành thư mục riêng (Ví dụ: `hero-section/`) chứa logic và UI riêng biệt, đóng gói qua `index.ts`.
+### A. Root flow
 
-## 3. Luồng Dữ liệu (Data Flow)
+1. Request vao `src/app/layout.tsx`
+2. Root layout cung cap `html`, `body`, fonts, va global styles
+3. Route di vao `src/app/[lang]/layout.tsx`
+4. `src/app/[lang]/layout.tsx` validate `lang` bang `isLocale`
+5. Neu locale khong hop le thi `notFound()`
 
-Ứng dụng phân tách rõ ràng giữa **Server State** và **Client State**:
+### B. Route phan vung hien tai
 
-### Server State (TanStack Query)
--   **Vị trí**: Nằm chủ yếu ở lớp `entities/[entity]/api`.
--   **Flow**: 
-    1.  Component gọi `useQuery` hoặc `useSuspenseQuery`.
-    2.  `api-client` gửi request lên Backend. Dữ liệu được cache và quản lý bởi TanStack Query.
+Co 2 nhom route chinh duoi `src/app/[lang]`:
 
-### Client State (Zustand)
--   **Vị trí**: Nằm ở lớp `shared/model` hoặc `features/[feature]/model`.
--   **Flow**: Lưu trữ các trạng thái UI toàn cục (ví dụ: thông tin user hiện tại sau khi login).
+- Public area:
+  - `page.tsx`
+  - `login/page.tsx`
+- Research area:
+  - `(research)/layout.tsx`
+  - `(research)/dashboard/page.tsx`
+  - `(research)/agentTracking/page.tsx`
+  - `(research)/report/page.tsx`
+  - `(research)/library/page.tsx`
 
-### Form Validation (Zod) & React 19 Actions
--   Sử dụng **Server Actions** trong `features` để xử lý form.
--   Dữ liệu được validate qua **Zod Schemas** trước khi xử lý.
+`(research)` la route group dung de ap shell chung ma khong thay doi URL public.
 
-## 4. Quy tắc "Vàng" (Golden Rules) - Cấp độ Professional
+## 3. Shared research shell
 
-1.  **Public API (Encapsulation)**: Mọi module/slice (trong `features`, `entities`, `widgets`) và các thư mục con của widget **BẮT BUỘC** phải có file `index.ts`. Các tầng trên chỉ được phép import tài nguyên thông qua file này. 
-    - *Lợi ích*: Cho phép refactor logic bên trong (ví dụ: chia nhỏ file trong `hero-section/`) mà không làm hỏng các nơi khác.
-2.  **Một chiều (One-way direction)**: Layer cấp cao (`widgets`) có thể import từ layer cấp thấp (`features`, `entities`, `shared`), nhưng tuyệt đối **KHÔNG** được import ngược lại hoặc import chéo giữa các slice cùng cấp.
-3.  **Tối ưu Interaction to Next Paint (INP)**: Tại tầng `features`, các hàm xử lý logic nặng (>50ms) phải sử dụng kỹ thuật **Yield to the main thread** (ví dụ: `scheduler.yield()`) để đảm bảo chỉ số INP luôn < 200ms.
-4.  **React 19 Actions & Optimistic UI**: 
-    - Ưu tiên sử dụng **Server Actions** cho các thao tác thay đổi dữ liệu.
-    - Kết hợp hook `useOptimistic` để cập nhật giao diện ngay lập tức mang lại trải nghiệm không độ trễ.
-5.  **Shared là "Pure"**: Các component trong `shared/ui` không được chứa logic nghiệp vụ hoặc gọi API.
-6.  **Surgical Update**: Khi sửa đổi, chỉ tập trung vào đúng layer có trách nhiệm cao nhất (Ví dụ: Sửa logic validate query thì vào `features/research-query`, sửa UI button thì vào `shared/ui/atoms`).
+### A. Vi tri
 
-## 5. Kết luận
+- Route shell: `src/app/[lang]/(research)/layout.tsx`
+- Widget shell: `src/widgets/research-shell/`
 
-Luồng frontend này đạt cấp độ **Professional**, đảm bảo tính bền vững và khả năng mở rộng cực cao thông qua việc tuân thủ nghiêm ngặt FSD và Public API.
+### B. Trach nhiem
 
----
-*Tài liệu này được cập nhật tự động bởi Gemini CLI vào ngày 25-04-2026.*
+`(research)/layout.tsx`:
+
+- nhan `lang` tu params
+- validate locale
+- load dictionary qua `getDictionary(lang)`
+- wrap toan bo research pages bang `ResearchShell`
+
+`ResearchShell`:
+
+- render `ResearchSidebar`
+- render `children` cua tung page
+- giu shell chung cho cac route research
+
+`ResearchSidebar`:
+
+- doc pathname hien tai
+- tu dong active state theo route
+- chua brand, CTA `New Inquiry`, primary nav, footer nav
+
+### C. Tac dung kien truc
+
+Shell khong nam trong tung page nua. Moi research page chi render page content cua no, con navigation root thuoc route-group layout.
+
+## 4. Luong render theo page
+
+### A. Landing
+
+- `src/app/[lang]/page.tsx`
+- render `LandingPage`
+- khong dung research shell
+
+### B. Login
+
+- `src/app/[lang]/login/page.tsx`
+- render `LoginPage`
+- khong dung research shell
+
+### C. Dashboard
+
+- `src/app/[lang]/(research)/dashboard/page.tsx`
+- load metadata va dictionary
+- render `DashboardPage`
+- `DashboardPage` chi chua dashboard content, khong render sidebar
+
+### D. Agent Tracking
+
+- `src/app/[lang]/(research)/agentTracking/page.tsx`
+- load metadata va dictionary
+- render `AgentTrackingPage`
+- `AgentTrackingPage` chi chua 3 content panels:
+  - execution plan
+  - process feed
+  - draft preview
+
+### E. Report va Library
+
+- `src/app/[lang]/(research)/report/page.tsx`
+- `src/app/[lang]/(research)/library/page.tsx`
+- hien tai la scaffold pages
+- da dung chung research shell
+- co metadata va heading rieng trong dictionary
+
+## 5. Data va dictionary flow
+
+Dictionary duoc load o 2 muc:
+
+- `src/app/[lang]/page.tsx`, `login/page.tsx`, va cac route page khac khi can metadata/page content
+- `src/app/[lang]/(research)/layout.tsx` de cap du lieu nav chung cho shell
+
+Dieu nay cho phep:
+
+- shell co nav text dung locale
+- page van giu metadata rieng
+- khong can hardcode label nav trong widget
+
+## 6. Nguyen tac cap nhat sau refactor nay
+
+1. Neu them mot research page moi, uu tien dat duoi `src/app/[lang]/(research)/...`
+2. Khong copy sidebar vao page widget
+3. Neu sua nav research, sua trong `ResearchSidebar` va dictionary thay vi sua tung page
+4. Neu page moi thuoc public area, khong dua vao `(research)` neu no khong can shared shell
+5. Metadata van dat tai `page.tsx` cua tung route, khong dat trong shell
+
+## 7. Golden path khi them page research moi
+
+1. Tao route moi duoi `src/app/[lang]/(research)/<segment>/page.tsx`
+2. Neu can loading skeleton, them `loading.tsx` cung segment
+3. Tao hoac tai su dung widget page-level trong `src/widgets/`
+4. Them dictionary keys neu can title/description moi
+5. Giu page widget chi lo page body, de shell chung xu ly navigation
+
+## 8. Ket luan
+
+Frontend flow hien tai tach ro:
+
+- root app shell
+- locale validation layer
+- research shell layer
+- page-specific content widgets
+
+Huong nay giam duplication, giu routing dung chuan App Router, va cho phep mo rong them research pages ma khong phai lap lai navbar.

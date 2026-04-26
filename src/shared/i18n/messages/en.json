@@ -205,6 +205,160 @@
       "copyright": "© 2024 ScholarAI Research Technologies. All rights reserved."
     }
   },
+  "reportPage": {
+    "metadata": {
+      "title": "ScholarAI | Research Reports",
+      "description": "ScholarAI report workspace for curated research outputs and evidence-backed export drafts."
+    },
+    "heading": "Longitudinal Analysis of Cognitive Architectures in LLMs",
+    "description": "A comprehensive review of emerging memory structures and reasoning pathways across leading foundational models.",
+    "badge": "Final Report",
+    "date": "Generated Oct 24, 2024",
+    "exportPdf": "Export to PDF",
+    "exportMd": "Export to MD",
+    "contents": {
+      "heading": "Contents",
+      "items": [
+        { "id": "executive-summary", "label": "Executive Summary" },
+        { "id": "key-findings", "label": "Key Findings" },
+        { "id": "market-data", "label": "Market Data", "indent": true },
+        { "id": "source-reliability", "label": "Source Reliability" }
+      ]
+    },
+    "sections": {
+      "executiveSummary": {
+        "title": "Executive Summary",
+        "paragraphs": [
+          "This inquiry synthesizes recent advancements in enabling sustained reasoning and stateful memory within large language models. The primary consensus across surveyed literature indicates a paradigm shift from stateless, autoregressive generation towards integrated systems utilizing external symbolic reasoning modules and hierarchical memory retrieval.",
+          "The integration of these architectures significantly mitigates hallucination rates while enabling complex, multi-step problem solving that previously required human intervention."
+        ]
+      },
+      "keyFindings": {
+        "title": "Key Findings",
+        "items": [
+          {
+            "icon": "psychology",
+            "title": "Emergence of Working Memory",
+            "description": "Models implementing explicit 'scratchpad' or working memory arrays demonstrate a 40% improvement in maintaining context over extended interactions compared to baseline transformer architectures."
+          },
+          {
+            "icon": "hub",
+            "title": "Neuro-Symbolic Integration",
+            "description": "The most robust systems currently couple the generative capabilities of the LLM with deterministic symbolic engines (e.g., Python interpreters, CAS) for mathematical and logical verification."
+          }
+        ]
+      },
+      "performanceMetrics": {
+        "title": "Architecture Performance Metrics",
+        "headers": ["Model Architecture", "Reasoning Acc.", "Context Retention", "Inference Cost"],
+        "rows": [
+          ["Standard Autoregressive", "64.2%", "12k tok", "Low"],
+          ["Chain-of-Thought Augmented", "78.5%", "16k tok", "Medium"],
+          ["Neuro-Symbolic Pipeline", "92.1%", "128k tok", "High"]
+        ]
+      },
+      "sourceReliability": {
+        "title": "Source Reliability & Citations",
+        "sources": [
+          {
+            "id": "Primary Source [1]",
+            "title": "Attention and Working Memory in Neural Networks",
+            "author": "Vaswani, A. et al. Journal of Machine Learning Research (2023).",
+            "status": "High Reliability - Peer Reviewed",
+            "type": "verified"
+          },
+          {
+            "id": "Empirical Data [2]",
+            "title": "Stateful Prompting and Context Windows",
+            "author": "Chen, L. ArXiv pre-print (2024).",
+            "status": "Moderate Reliability - Pre-print",
+            "type": "science"
+          }
+        ]
+      }
+    }
+  },
+  "libraryPage": {
+    "metadata": {
+      "title": "ScholarAI | Research Library",
+      "description": "ScholarAI library workspace for saved sources, dossiers, and reusable evidence collections."
+    },
+    "toolbar": {
+      "searchLabel": "Search library",
+      "searchPlaceholder": "Search library, reports, citations...",
+      "activityLabel": "Open notifications",
+      "historyLabel": "Open activity history",
+      "profileLabel": "Open account profile"
+    },
+    "heading": "Research Library",
+    "description": "Access your saved reports, curated collections, and active reading list from one evidence-linked workspace.",
+    "filterLabel": "Filter library entries by type",
+    "filters": ["All Types", "Reports", "Papers", "Collections"],
+    "newCollection": "New Collection",
+    "recentReports": {
+      "heading": "Recent Reports",
+      "viewAll": "View All"
+    },
+    "reportActions": {
+      "share": "Share report",
+      "export": "Export report"
+    },
+    "reports": [
+      {
+        "statusLabel": "Complete",
+        "statusTone": "complete",
+        "moreLabel": "Open report options",
+        "title": "Emergent Behaviors in Large Language Models",
+        "description": "A comprehensive analysis of zero-shot capabilities appearing in models exceeding 100B parameters, focused on reasoning tasks and ethical implications.",
+        "meta": "Oct 12, 2023",
+        "actionLabel": "View"
+      },
+      {
+        "statusLabel": "Complete",
+        "statusTone": "complete",
+        "moreLabel": "Open report options",
+        "title": "Graphene Synthesis Alternatives 2023",
+        "description": "Review of scalable chemical vapor deposition methods and cost analysis of precursors for industrial-scale manufacturing.",
+        "meta": "Sep 28, 2023",
+        "actionLabel": "View"
+      },
+      {
+        "statusLabel": "Draft",
+        "statusTone": "draft",
+        "moreLabel": "Open report options",
+        "title": "Macroeconomic Impacts of AGI Transition",
+        "description": "Preliminary synthesis of labor market displacement models and proposed universal basic income frameworks across OECD nations.",
+        "meta": "Last edited 2d ago",
+        "actionLabel": "Continue"
+      }
+    ],
+    "collections": {
+      "heading": "Collections",
+      "items": [
+        { "title": "GenAI Research", "countLabel": "14 items" },
+        { "title": "Materials Science", "countLabel": "8 items" },
+        { "title": "Economics 2024", "countLabel": "22 items" }
+      ]
+    },
+    "readingList": {
+      "heading": "Reading List",
+      "items": [
+        {
+          "title": "Attention Is All You Need",
+          "meta": "Vaswani et al. (2017) • NIPS"
+        },
+        {
+          "title": "Sparks of Artificial General Intelligence",
+          "meta": "Bubeck et al. (2023) • arXiv"
+        }
+      ],
+      "viewAll": "View All Papers"
+    },
+    "savedQueue": {
+      "heading": "Saved Evidence Queue",
+      "description": "Pinned collections and draft packets remain available here so researchers can reopen context without rebuilding the navigation flow."
+    }
+  },
   "loginPage": {
     "metadata": {
       "title": "ScholarAI | Autonomous Research for Complex Inquiry",

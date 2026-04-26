@@ -34,5 +34,5 @@ export default async function Page({ params }: PageProps) {
 
   const dict = await getDictionary(lang);
 
-  return <AgentTrackingPage locale={lang} dictionary={dict} />;
+  return <AgentTrackingPage dictionary={dict} />;
 }
